@@ -70,5 +70,12 @@ Radiant::Initializer.run do |config|
     ActiveSupport::Inflector.inflections do |inflect|
       inflect.uncountable 'config'
     end
+    
+    # Force RedCloth to not process new-lines as hard breaks
+    RedCloth::TextileDoc.class_eval do
+      def hard_breaks
+        false
+      end
+    end
   end
 end
