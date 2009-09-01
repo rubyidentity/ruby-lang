@@ -1,74 +1,43 @@
 == Welcome to Radiant
 
-Radiant is a no-fluff, open source content management system designed
-for small teams. It is similar to Textpattern or MovableType, but is
-a general purpose content management system (not just a blogging
-engine).
+Radiant is a no-fluff, open source content management system designed for
+small teams. It is similar to Textpattern or MovableType, but is a general
+purpose content management system (not just a blogging engine).
 
 Radiant features:
 
 * An elegant user interface
 * The ability to arrange pages in a hierarchy
-* Flexible templating with layouts, snippets, page parts, and a
-  custom tagging language (Radius: http://radius.rubyforge.org)
-* Special page-oriented plugins called behaviors
+* Flexible templating with layouts, snippets, page parts, and a custom tagging
+  language (Radius: http://radius.rubyforge.org)
 * A simple user management/permissions system
-* Support for Markdown and Textile as well as traditional HTML
-  (it's easy to create other filters)
+* Support for Markdown and Textile as well as traditional HTML (it's easy to
+  create other filters)
+* An advanced plugin system
 * Operates in two modes: dev and production depending on the URL
 * A caching system which expires pages every 5 minutes
-* Built using Ruby on Rails (which means that extending Radiant is
-  as easy as any other Rails application)
+* Built using Ruby on Rails
 * And much more...
 
 
 == License
 
-Radiant is released under the MIT license and is copyright (c) 2006
-John W. Long. A copy of the MIT license can be found in the LICENSE
-file.
+Radiant is released under the MIT license and is copyright (c) 2006-2008
+John W. Long and Sean Cribbs. A copy of the MIT license can be found in the
+LICENSE file.
 
 
 == Installation and Setup
 
-Radiant is a traditional Ruby on Rails application, meaning that you
-can configure and run it the way you would a normal Rails
-application.
+Radiant is a traditional Ruby on Rails application, meaning that you can
+configure and run it the way you would a normal Rails application.
 
-Once you have extracted the files into the directory where you would
-like to install Radiant:
-
-1. Create a MySQL/PostgreSQL/SQLite database for your Web site.
-
-2. Create config/database.yml for your database setup. (There are
-   several examples in the config directory.)
-
-3. Run the database setup script:
-
-     % script/setup_database production
-
-4. Start it like a normal Rails application. To test execute:
-
-     % script/server production
-   
-   And open your Web browser on port 3000 (http://localhost:3000).
-   
-When using Radiant on a production system you may also need to set
-permissions on the public and cache directories so that your Web server
-can access those directories with the user that it runs under.
-
-Once you've installed Radiant on your own Web site, be sure to add your
-name and Web site to the list of radiant users:
-
-http://dev.radiantcms.org/radiant/wiki/RadiantUsers
+See the INSTALL file for more details.
 
 
-== Radiant Admin Interface
+== Development Requirements
 
-The administrative interface is available at /admin/. By default the
-`setup_database` script creates a user called "admin" with a password of
-"radiant".
-
+ * gem install ZenTest rspec rspec-rails
 
 == Support
 
@@ -80,12 +49,12 @@ There is also a Trac powered dev site available here:
 
 http://dev.radiantcms.org/
 
-Please Note: Before filing a ticket on the dev site discuss your question
-or problem on the mailing list. This makes it much easier to manage
-legitimate tickets.
-
+Please Note: Before filing a ticket on the dev site discuss your question or
+problem on the mailing list. This makes it much easier to manage legitimate
+tickets.
 
 Enjoy!
 
 --
-John Long :: http://wiseheartdesign.com
+The Radiant Dev Team
+http://radiantcms.org

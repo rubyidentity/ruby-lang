@@ -67,7 +67,7 @@ records:
       title: File Not Found
       breadcrumb: File Not Found
       slug: file-not-found
-      behavior_id: Page Missing
+      class_name: FileNotFoundPage
       parent_id: 1
       status_id: 100
     rss_feed:
@@ -83,7 +83,7 @@ records:
       title: Articles
       breadcrumb: Articles
       slug: articles
-      behavior_id: Archive
+      class_name: ArchivePage
       parent_id: 1
       status_id: 100
     first_post:

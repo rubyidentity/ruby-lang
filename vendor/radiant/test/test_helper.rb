@@ -1,12 +1,19 @@
 unless defined? TEST_ROOT
   ENV["RAILS_ENV"] = "test"
-
-  require 'pathname'
-  TEST_ROOT = Pathname.new(File.expand_path(File.dirname(__FILE__))).cleanpath(true).to_s
-
-  require TEST_ROOT + "/../config/environment"
+  
+  require 'test/unit'
+  
+  TEST_ROOT = File.expand_path(File.dirname(__FILE__))
+  
+  unless defined? RADIANT_ROOT
+    if env_file = ENV["RADIANT_ENV_FILE"]
+      require env_file
+    else
+      require File.expand_path(TEST_ROOT + "/../config/environment")
+    end
+  end
   require 'test_help'
-
+  
   class Test::Unit::TestCase
     # Transactional fixtures accelerate your tests by wrapping each test method
     # in a transaction that's rolled back on completion.  This ensures that the
@@ -21,13 +28,16 @@ unless defined? TEST_ROOT
     # don't care one way or the other, switching from MyISAM to InnoDB tables
     # is recommended.
     self.use_transactional_fixtures = true
-
+    
     # Instantiated fixtures are slow, but give you @david where otherwise you
     # would need people(:david).  If you don't want to migrate your existing
     # test cases which use the @david style and don't mind the speed hit (each
     # instantiated fixtures translates to a database query per test method),
     # then set this back to true.
     self.use_instantiated_fixtures = false
+    
+    # Make sure instance installs know where fixtures are
+    self.fixture_path = ["#{TEST_ROOT}/fixtures"]
     
     class << self
       # Class method for test helpers

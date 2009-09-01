@@ -10,7 +10,7 @@ Action Pack implements these actions as public methods on Action Controllers
 and uses Action Views to implement the template rendering. Action Controllers
 are then responsible for handling all the actions relating to a certain part
 of an application. This grouping usually consists of actions for lists and for
-CRUDs revolving around a single (or a few) model objects. So ContactController
+CRUDs revolving around a single (or a few) model objects. So ContactsController
 would be responsible for listing contacts, creating, deleting, and updating
 contacts. A WeblogController could be responsible for both posts and comments.
 
@@ -31,10 +31,10 @@ http://www.rubyonrails.org.
 A short rundown of the major features:
 
 * Actions grouped in controller as methods instead of separate command objects
-  and can therefore share helper methods.
+  and can therefore share helper methods
 
-    BlogController < ActionController::Base
-      def display
+    CustomersController < ActionController::Base
+      def show
         @customer = find_customer
       end
       
@@ -42,7 +42,7 @@ A short rundown of the major features:
         @customer = find_customer
         @customer.attributes = params[:customer]
         @customer.save ? 
-          redirect_to(:action => "display") : 
+          redirect_to(:action => "show") :
           render(:action => "edit")
       end
       
@@ -59,7 +59,7 @@ A short rundown of the major features:
       Title: <%= post.title %>
     <% end %>
 
-    All post titles: <%= @post.collect{ |p| p.title }.join ", " %>
+    All post titles: <%= @posts.collect{ |p| p.title }.join ", " %>
 
     <% unless @person.is_client? %>
       Not for clients to see...
@@ -97,10 +97,10 @@ A short rundown of the major features:
 
     class WeblogController < ActionController::Base
       before_filter :authenticate, :cache, :audit
-      after_filter { |c| c.response.body = GZip::compress(c.response.body) }
+      after_filter { |c| c.response.body = Gzip::compress(c.response.body) }
       after_filter LocalizeFilter
       
-      def list
+      def index
         # Before this action is run, the user will be authenticated, the cache
         # will be examined to see if a valid copy of the results already
         # exists, and the action will be logged for auditing.
@@ -123,7 +123,7 @@ A short rundown of the major features:
     <%= text_field "post", "title", "size" => 30 %>
     <%= html_date_select(Date.today) %>
     <%= link_to "New post", :controller => "post", :action => "new" %>
-    <%= truncate(post.title, 25) %>
+    <%= truncate(post.title, :length => 25) %>
  
   {Learn more}[link:classes/ActionView/Helpers.html]
 
@@ -139,7 +139,7 @@ A short rundown of the major features:
     end
 
     Layout file (called weblog_layout):
-      <html><body><%= @content_for_layout %></body></html>
+      <html><body><%= yield %></body></html>
     
     Template for hello_world action:
       <h1>Hello world</h1>
@@ -155,7 +155,7 @@ A short rundown of the major features:
     map.connect 'clients/:client_name/:project_name/:controller/:action'
 
     Accessing /clients/37signals/basecamp/project/dash calls ProjectController#dash with
-    { "client_name" => "37signals", "project_name" => "basecamp" } in @params["params"]
+    { "client_name" => "37signals", "project_name" => "basecamp" } in params[:params]
     
     From that URL, you can rewrite the redirect in a number of ways:
     
@@ -168,7 +168,7 @@ A short rundown of the major features:
   {Learn more}[link:classes/ActionController/Base.html]
 
 
-* Javascript and Ajax integration.
+* Javascript and Ajax integration
 
     link_to_function "Greeting", "alert('Hello world!')"
     link_to_remote "Delete this post", :update => "posts", 
@@ -177,30 +177,9 @@ A short rundown of the major features:
   {Learn more}[link:classes/ActionView/Helpers/JavaScriptHelper.html]
 
 
-* Pagination for navigating lists of results.
+* Easy testing of both controller and rendered template through ActionController::TestCase
 
-    # controller
-    def list
-      @pages, @people =
-        paginate :people, :order => 'last_name, first_name'
-    end
-
-    # view
-    <%= link_to "Previous page", { :page => @pages.current.previous } if @pages.current.previous %>
-    <%= link_to "Next page", { :page => @pages.current.next } if @pages.current.next %>
-
-  {Learn more}[link:classes/ActionController/Pagination.html]
-
-
-* Easy testing of both controller and template result through TestRequest/Response
-
-    class LoginControllerTest < Test::Unit::TestCase
-      def setup
-        @controller = LoginController.new
-        @request    = ActionController::TestRequest.new
-        @response   = ActionController::TestResponse.new
-      end
-
+    class LoginControllerTest < ActionController::TestCase
       def test_failing_authenticate
         process :authenticate, :user_name => "nop", :password => ""
         assert flash.has_key?(:alert)
@@ -208,7 +187,7 @@ A short rundown of the major features:
       end
     end
 
-  {Learn more}[link:classes/ActionController/TestRequest.html]
+  {Learn more}[link:classes/ActionController/TestCase.html]
 
 
 * Automated benchmarking and integrated logging
@@ -221,11 +200,11 @@ A short rundown of the major features:
     If Active Record is used as the model, you'll have the database debugging
     as well:
 
-    Processing WeblogController#create (for 127.0.0.1 at Sat Jun 19 14:04:23)
-    Params: {"controller"=>"weblog", "action"=>"create",  
+    Processing PostsController#create (for 127.0.0.1 at Sat Jun 19 14:04:23)
+    Params: {"controller"=>"posts", "action"=>"create",
              "post"=>{"title"=>"this is good"} }
     SQL (0.000627) INSERT INTO posts (title) VALUES('this is good')
-    Redirected to http://test/weblog/display/5
+    Redirected to http://example.com/posts/5
     Completed in 0.221764 (4 reqs/sec) | DB: 0.059920 (27%)
 
     You specify a logger through a class method, such as:
@@ -262,30 +241,6 @@ A short rundown of the major features:
   {Learn more}[link:classes/ActionController/Caching.html]
 
 
-* Component requests from one controller to another
-
-    class WeblogController < ActionController::Base
-      # Performs a method and then lets hello_world output its render
-      def delegate_action
-        do_other_stuff_before_hello_world
-        render_component :controller => "greeter",  :action => "hello_world"
-      end
-    end
-  
-    class GreeterController < ActionController::Base
-      def hello_world
-        render_text "Hello World!"
-      end
-    end
-  
-    The same can be done in a view to do a partial rendering:
-  
-      Let's see a greeting:
-      <%= render_component :controller => "greeter", :action => "hello_world" %>
-
-  {Learn more}[link:classes/ActionController/Components.html]
-  
-
 * Powerful debugging mechanism for local requests
 
     All exceptions raised on actions performed on the request of a local user
@@ -296,9 +251,8 @@ A short rundown of the major features:
   {Learn more}[link:classes/ActionController/Rescue.html]
 
 
-* Scaffolding for Action Record model objects
+* Scaffolding for Active Record model objects
 
-    require 'account' # must be an Active Record class
     class AccountController < ActionController::Base
       scaffold :account
     end
@@ -306,7 +260,7 @@ A short rundown of the major features:
     The AccountController now has the full CRUD range of actions and default
     templates: list, show, destroy, new, create, edit, update
     
-  {Learn more}link:classes/ActionController/Scaffolding/ClassMethods.html
+  {Learn more}[link:classes/ActionController/Scaffolding/ClassMethods.html]
 
 
 * Form building for Active Record model objects
@@ -338,22 +292,22 @@ A short rundown of the major features:
       <input type="submit" value="Create">
     </form>
 
-    This form generates a @params["post"] array that can be used directly in a save action:
+    This form generates a params[:post] array that can be used directly in a save action:
     
     class WeblogController < ActionController::Base
-      def save
+      def create
         post = Post.create(params[:post])
-        redirect_to :action => "display", :id => post.id
+        redirect_to :action => "show", :id => post.id
       end
     end
 
   {Learn more}[link:classes/ActionView/Helpers/ActiveRecordHelper.html]
 
 
-* Runs on top of WEBrick, CGI, FCGI, and mod_ruby
+* Runs on top of WEBrick, Mongrel, CGI, FCGI, and mod_ruby
 
 
-== Simple example
+== Simple example (from outside of Rails)
 
 This example will implement a simple weblog system using inline templates and
 an Active Record model. So let's build that WeblogController with just a few
@@ -366,11 +320,11 @@ methods:
     layout "weblog/layout"
   
     def index
-      @posts = Post.find_all
+      @posts = Post.find(:all)
     end
     
-    def display
-      @post = Post.find(:params[:id])
+    def show
+      @post = Post.find(params[:id])
     end
     
     def new
@@ -379,11 +333,11 @@ methods:
     
     def create
       @post = Post.create(params[:post])
-      redirect_to :action => "display", :id => @post.id
+      redirect_to :action => "show", :id => @post.id
     end
   end
 
-  WeblogController::Base.template_root = File.dirname(__FILE__)
+  WeblogController::Base.view_paths = [ File.dirname(__FILE__) ]
   WeblogController.process_cgi if $0 == __FILE__
 
 The last two lines are responsible for telling ActionController where the
@@ -392,44 +346,31 @@ request from the web-server (like to be Apache).
 
 And the templates look like this:
 
-  weblog/layout.rhtml:
+  weblog/layout.html.erb:
     <html><body>
-    <%= @content_for_layout %>
+    <%= yield %>
     </body></html>
 
-  weblog/index.rhtml:
+  weblog/index.html.erb:
     <% for post in @posts %>
-      <p><%= link_to(post.title, :action => "display", :id => post.id %></p>
+      <p><%= link_to(post.title, :action => "show", :id => post.id) %></p>
     <% end %>
 
-  weblog/display.rhtml:
+  weblog/show.html.erb:
     <p>
-      <b><%= post.title %></b><br/>
-      <b><%= post.content %></b>
+      <b><%= @post.title %></b><br/>
+      <b><%= @post.content %></b>
     </p>
 
-  weblog/new.rhtml:
+  weblog/new.html.erb:
     <%= form "post" %>
   
 This simple setup will list all the posts in the system on the index page,
 which is called by accessing /weblog/. It uses the form builder for the Active
 Record model to make the new screen, which in turn hands everything over to
 the create action (that's the default target for the form builder when given a
-new model). After creating the post, it'll redirect to the display page using
-an URL such as /weblog/display/5 (where 5 is the id of the post).
-
-
-== Examples
-
-Action Pack ships with three examples that all demonstrate an increasingly
-detailed view of the possibilities. First is blog_controller that is just a
-single file for the whole MVC (but still split into separate parts). Second is
-the debate_controller that uses separate template files and multiple screens.
-Third is the address_book_controller that uses the layout feature to separate
-template casing from content.
-
-Please note that you might need to change the "shebang" line to 
-#!/usr/local/env ruby, if your Ruby is not placed in /usr/local/bin/ruby
+new model). After creating the post, it'll redirect to the show page using
+an URL such as /weblog/5 (where 5 is the id of the post).
 
 
 == Download
@@ -440,7 +381,7 @@ The latest version of Action Pack can be found at
 
 Documentation can be found at 
 
-* http://ap.rubyonrails.com
+* http://api.rubyonrails.com
 
 
 == Installation
@@ -459,13 +400,10 @@ Action Pack is released under the MIT license.
 
 == Support
 
-The Action Pack homepage is http://www.rubyonrails.com. You can find
+The Action Pack homepage is http://www.rubyonrails.org. You can find
 the Action Pack RubyForge page at http://rubyforge.org/projects/actionpack.
 And as Jim from Rake says:
 
    Feel free to submit commits or feature requests.  If you send a patch,
    remember to update the corresponding unit tests.  If fact, I prefer
    new feature to be submitted in the form of new unit tests.
-
-For other information, feel free to ask on the ruby-talk mailing list (which
-is mirrored to comp.lang.ruby) or contact mailto:david@loudthinking.com.

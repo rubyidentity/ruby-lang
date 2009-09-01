@@ -1,5 +1,6 @@
 # General Apache options
-AddHandler fcgid-script .fcgi
+AddHandler fastcgi-script .fcgi
+#AddHandler cgi-script .cgi
 Options +FollowSymLinks +ExecCGI
 
 # If you don't want Rails to look in certain directories,
@@ -8,7 +9,7 @@ Options +FollowSymLinks +ExecCGI
 # Example:
 #   RewriteCond %{REQUEST_URI} ^/notrails.*
 #   RewriteRule .* - [L]
-#
+
 # Redirect all requests not available on the filesystem to Rails
 # By default the cgi dispatcher is used which is very slow
 # 
@@ -16,16 +17,24 @@ Options +FollowSymLinks +ExecCGI
 #
 # Example:
 #   RewriteRule ^(.*)$ dispatch.fcgi [QSA,L]
-
 RewriteEngine On
+
+# If your Rails application is accessed via an Alias directive,
+# then you MUST also set the RewriteBase in this htaccess file.
+#
+# Example:
+#   Alias /myrailsapp /path/to/myrailsapp/public
+#   RewriteBase /myrailsapp
+
 RewriteRule ^$ index.html [QSA]
 RewriteRule ^([^.]+)$ $1.html [QSA]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ dispatch.fcgi [QSA,L]
 
-#RewriteEngine On
-#RewriteCond %{REQUEST_FILENAME} !-f
-#RewriteRule ^(.*)$ digg.html [QSA,L]
-
 # In case Rails experiences terminal errors
-ErrorDocument 500 /500.html
+# Instead of displaying this message you can supply a file here which will be rendered instead
+# 
+# Example:
+#   ErrorDocument 500 /500.html
+
+ErrorDocument 500 "<h2>Application error</h2>Rails application failed to start properly"

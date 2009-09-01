@@ -1,61 +1,0 @@
-8
-
-dir
-6435
-http://dev.rubyonrails.org/svn/rails/tags/rel_1-1-6/activerecord/test/connections
-http://dev.rubyonrails.org/svn/rails
-
-
-
-2006-04-04T16:33:31.099509Z
-4152
-david
-
-
-svn:special svn:externals svn:needs-lock
-
-
-
-
-
-
-
-
-
-
-
-5ecf4fe2-1ee6-0310-87b1-e25e094e27de
-
-native_openbase
-dir
-
-native_sqlserver_odbc
-dir
-
-native_sqlite
-dir
-
-native_postgresql
-dir
-
-native_sqlite3
-dir
-
-native_mysql
-dir
-
-native_oracle
-dir
-
-native_firebird
-dir
-
-native_sqlserver
-dir
-
-native_sybase
-dir
-
-native_db2
-dir
-

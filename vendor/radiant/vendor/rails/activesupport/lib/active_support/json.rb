@@ -1,37 +1,23 @@
-require 'active_support/json/encoders'
-
 module ActiveSupport
-  module JSON #:nodoc:
-    class CircularReferenceError < StandardError #:nodoc:
-    end
-    # returns the literal string as its JSON encoded form.  Useful for passing javascript variables into functions.
-    #
-    # page.call 'Element.show', ActiveSupport::JSON::Variable.new("$$(#items li)")
-    class Variable < String #:nodoc:
-      def to_json
-        self
-      end
+  # If true, use ISO 8601 format for dates and times. Otherwise, fall back to the Active Support legacy format.
+  mattr_accessor :use_standard_json_time_format
+
+  class << self
+    def escape_html_entities_in_json
+      @escape_html_entities_in_json
     end
 
-    class << self
-      REFERENCE_STACK_VARIABLE = :json_reference_stack
-      
-      def encode(value)
-        raise_on_circular_reference(value) do
-          Encoders[value.class].call(value)
+    def escape_html_entities_in_json=(value)
+      ActiveSupport::JSON::Encoding.escape_regex = \
+        if value
+          /[\010\f\n\r\t"\\><&]/
+        else
+          /[\010\f\n\r\t"\\]/
         end
-      end
-      
-      protected
-        def raise_on_circular_reference(value)
-          stack = Thread.current[REFERENCE_STACK_VARIABLE] ||= []
-          raise CircularReferenceError, 'object references itself' if
-            stack.include? value
-          stack << value
-          yield
-        ensure
-          stack.pop
-        end
+      @escape_html_entities_in_json = value
     end
   end
 end
+
+require 'active_support/json/encoding'
+require 'active_support/json/decoding'

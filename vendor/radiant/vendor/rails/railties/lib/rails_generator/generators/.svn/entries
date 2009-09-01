@@ -1,34 +1,0 @@
-8
-
-dir
-6435
-http://dev.rubyonrails.org/svn/rails/tags/rel_1-1-6/railties/lib/rails_generator/generators
-http://dev.rubyonrails.org/svn/rails
-
-
-
-2006-08-07T09:25:21.787478Z
-4708
-bitsweat
-
-
-svn:special svn:externals svn:needs-lock
-
-
-
-
-
-
-
-
-
-
-
-5ecf4fe2-1ee6-0310-87b1-e25e094e27de
-
-components
-dir
-
-applications
-dir
-

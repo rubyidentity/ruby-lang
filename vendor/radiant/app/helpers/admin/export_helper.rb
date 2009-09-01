@@ -1,2 +1,2 @@
-module ExportHelper
+module Admin::ExportHelper
 end

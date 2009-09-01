@@ -1,80 +1,111 @@
-require File.dirname(__FILE__) + '/../abstract_unit'
+require 'abstract_unit'
 
-class CookieTest < Test::Unit::TestCase
+class CookieTest < ActionController::TestCase
   class TestController < ActionController::Base
-    def authenticate_with_deprecated_writer
-      cookie "name" => "user_name", "value" => "david"
-      render_text "hello world"
-    end
-
     def authenticate
       cookies["user_name"] = "david"
-      render_text "hello world"
     end
 
-    def authenticate_for_fourten_days
-      cookies["user_name"] = { "value" => "david", "expires" => Time.local(2005, 10, 10) }
-      render_text "hello world"
+    def authenticate_for_fourteen_days
+      cookies["user_name"] = { "value" => "david", "expires" => Time.utc(2005, 10, 10,5) }
     end
 
-    def authenticate_for_fourten_days_with_symbols
-      cookies[:user_name] = { :value => "david", :expires => Time.local(2005, 10, 10) }
-      render_text "hello world"
+    def authenticate_for_fourteen_days_with_symbols
+      cookies[:user_name] = { :value => "david", :expires => Time.utc(2005, 10, 10,5) }
     end
 
     def set_multiple_cookies
-      cookies["user_name"] = { "value" => "david", "expires" => Time.local(2005, 10, 10) }
+      cookies["user_name"] = { "value" => "david", "expires" => Time.utc(2005, 10, 10,5) }
       cookies["login"]     = "XJ-122"
-      render_text "hello world"
     end
 
     def access_frozen_cookies
-      @cookies["will"] = "work"
-      render_text "hello world"
+      cookies["will"] = "work"
     end
 
-    def rescue_action(e) raise end
+    def logout
+      cookies.delete("user_name")
+    end
+
+    def delete_cookie_with_path
+      cookies.delete("user_name", :path => '/beaten')
+      render :text => "hello world"
+    end
+
+    def authenticate_with_http_only
+      cookies["user_name"] = { :value => "david", :httponly => true }
+    end
+
+    def rescue_action(e)
+      raise unless ActionView::MissingTemplate # No templates here, and we don't care about the output
+    end
   end
 
-  def setup
-    @request  = ActionController::TestRequest.new
-    @response = ActionController::TestResponse.new
+  tests TestController
 
+  def setup
     @request.host = "www.nextangle.com"
   end
 
-  def test_setting_cookie_with_deprecated_writer
-    @request.action = "authenticate_with_deprecated_writer"
-    assert_equal [ CGI::Cookie::new("name" => "user_name", "value" => "david") ], process_request.headers["cookie"]
-  end
-
   def test_setting_cookie
-    @request.action = "authenticate"
-    assert_equal [ CGI::Cookie::new("name" => "user_name", "value" => "david") ], process_request.headers["cookie"]
+    get :authenticate
+    assert_equal ["user_name=david; path=/"], @response.headers["Set-Cookie"]
+    assert_equal({"user_name" => "david"}, @response.cookies)
   end
 
   def test_setting_cookie_for_fourteen_days
-    @request.action = "authenticate_for_fourten_days"
-    assert_equal [ CGI::Cookie::new("name" => "user_name", "value" => "david", "expires" => Time.local(2005, 10, 10)) ], process_request.headers["cookie"]
+    get :authenticate_for_fourteen_days
+    assert_equal ["user_name=david; path=/; expires=Mon, 10-Oct-2005 05:00:00 GMT"], @response.headers["Set-Cookie"]
+    assert_equal({"user_name" => "david"}, @response.cookies)
   end
 
   def test_setting_cookie_for_fourteen_days_with_symbols
-    @request.action = "authenticate_for_fourten_days"
-    assert_equal [ CGI::Cookie::new("name" => "user_name", "value" => "david", "expires" => Time.local(2005, 10, 10)) ], process_request.headers["cookie"]
+    get :authenticate_for_fourteen_days_with_symbols
+    assert_equal ["user_name=david; path=/; expires=Mon, 10-Oct-2005 05:00:00 GMT"], @response.headers["Set-Cookie"]
+    assert_equal({"user_name" => "david"}, @response.cookies)
+  end
+
+  def test_setting_cookie_with_http_only
+    get :authenticate_with_http_only
+    assert_equal ["user_name=david; path=/; HttpOnly"], @response.headers["Set-Cookie"]
+    assert_equal({"user_name" => "david"}, @response.cookies)
   end
 
   def test_multiple_cookies
-    @request.action = "set_multiple_cookies"
-    assert_equal 2, process_request.headers["cookie"].size
+    get :set_multiple_cookies
+    assert_equal 2, @response.cookies.size
+    assert_equal "user_name=david; path=/; expires=Mon, 10-Oct-2005 05:00:00 GMT", @response.headers["Set-Cookie"][0]
+    assert_equal "login=XJ-122; path=/", @response.headers["Set-Cookie"][1]
+    assert_equal({"login" => "XJ-122", "user_name" => "david"}, @response.cookies)
   end
 
   def test_setting_test_cookie
-    @request.action = "access_frozen_cookies"
-    assert_nothing_raised { process_request }
+    assert_nothing_raised { get :access_frozen_cookies }
   end
 
-  private
-    def process_request
-      TestController.process(@request, @response)
-    end
+  def test_expiring_cookie
+    get :logout
+    assert_equal ["user_name=; path=/; expires=Thu, 01-Jan-1970 00:00:00 GMT"], @response.headers["Set-Cookie"]
+    assert_equal({"user_name" => nil}, @response.cookies)
+  end
+
+  def test_cookiejar_accessor
+    @request.cookies["user_name"] = "david"
+    @controller.request = @request
+    jar = ActionController::CookieJar.new(@controller)
+    assert_equal "david", jar["user_name"]
+    assert_equal nil, jar["something_else"]
+  end
+
+  def test_cookiejar_accessor_with_array_value
+    @request.cookies["pages"] = %w{1 2 3}
+    @controller.request = @request
+    jar = ActionController::CookieJar.new(@controller)
+    assert_equal %w{1 2 3}, jar["pages"]
+  end
+
+  def test_delete_cookie_with_path
+    get :delete_cookie_with_path
+    assert_equal ["user_name=; path=/beaten; expires=Thu, 01-Jan-1970 00:00:00 GMT"], @response.headers["Set-Cookie"]
+  end
 end

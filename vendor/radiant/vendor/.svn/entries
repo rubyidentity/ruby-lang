@@ -1,34 +1,0 @@
-8
-
-dir
-352
-http://dev.radiantcms.org/svn/radiant/tags/rel_0-5-2/radiant/vendor
-http://dev.radiantcms.org/svn/radiant
-
-
-
-2006-08-11T00:24:49.109132Z
-99
-jlong
-has-props
-
-svn:special svn:externals svn:needs-lock
-svn:externals
-
-
-
-
-
-
-
-
-
-
-6226cccd-6db4-da11-80d6-0014220fd306
-
-bluecloth
-dir
-
-plugins
-dir
-

@@ -48,7 +48,7 @@ module InheritableClassAttributes
     end
     
     def inherited_with_inheritable_class_attributes(klass)
-      inherited_without_inheritable_class_attributes(child) if respond_to?(:inherited_without_inheritable_class_attributes)
+      inherited_without_inheritable_class_attributes(klass) if respond_to?(:inherited_without_inheritable_class_attributes)
       
       readers = inheritable_cattr_readers.dup
       writers = inheritable_cattr_writers.dup

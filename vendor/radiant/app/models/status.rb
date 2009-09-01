@@ -11,11 +11,11 @@ class Status
   end
   
   def self.[](value)
-    @@statuses.select { |status| status.symbol == value.to_s.downcase.intern }.first
+    @@statuses.find { |status| status.symbol == value.to_s.downcase.intern }
   end
   
   def self.find(id)
-    @@statuses.select { |status| status.id.to_s == id.to_s }.first
+    @@statuses.find { |status| status.id.to_s == id.to_s }
   end
   
   def self.find_all

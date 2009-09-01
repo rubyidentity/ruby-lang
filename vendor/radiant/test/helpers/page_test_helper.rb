@@ -1,4 +1,45 @@
+class NoCachePage < Page
+  description 'Turns caching off for testing.'
+  
+  def cache?
+    false
+  end
+end
+
+unless defined?(::CustomFileNotFoundPage)
+  class ::CustomFileNotFoundPage < FileNotFoundPage
+  end
+end
+
+class TestPage < Page
+  description 'this is just a test page'
+  
+  tag 'test1' do
+    'Hello world!'
+  end
+  
+  tag 'test2' do
+    'Another test.'
+  end
+  
+  def headers
+    {
+      'cool' => 'beans',
+      'request' => @request.inspect[20..30],
+      'response' => @response.inspect[20..31]
+    }
+  end
+  
+end
+
+class VirtualPage < Page
+  def virtual?
+    true
+  end
+end
+
 module PageTestHelper
+  
   VALID_PAGE_PARAMS = {
     :title => 'New Page',
     :slug => 'page',
@@ -26,7 +67,9 @@ module PageTestHelper
   
   def create_test_page(options = {})
     options[:title] ||= @page_title
-    page = Page.new page_params(options)
+    klass = options.delete(:class_name) || Page
+    klass = Kernel.eval(klass) if klass.kind_of? String
+    page = klass.new page_params(options)
     if page.save
       page
     else

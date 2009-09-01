@@ -1,24 +1,26 @@
 print "Using native Firebird\n"
-require_dependency 'fixtures/course'
+require_dependency 'models/course'
 require 'logger'
 
 ActiveRecord::Base.logger = Logger.new("debug.log")
 
-db1 = 'activerecord_unittest'
-db2 = 'activerecord_unittest2'
+ActiveRecord::Base.configurations = {
+  'arunit' => {
+    :adapter => 'firebird',
+    :host => 'localhost',
+    :username => 'rails',
+    :password => 'rails',
+    :database => 'activerecord_unittest',
+    :charset => 'UTF8'
+  },
+  'arunit2' => {
+    :adapter => 'firebird',
+    :host => 'localhost',
+    :username => 'rails',
+    :password => 'rails',
+    :database => 'activerecord_unittest2'
+  }
+}
 
-ActiveRecord::Base.establish_connection(
-  :adapter  => "firebird",
-  :host     => "localhost",
-  :username => "rails",
-  :password => "rails",
-  :database => db1
-)
-
-Course.establish_connection(
-  :adapter  => "firebird",
-  :host     => "localhost",
-  :username => "rails",
-  :password => "rails",
-  :database => db2
-)
+ActiveRecord::Base.establish_connection 'arunit'
+Course.establish_connection 'arunit2'

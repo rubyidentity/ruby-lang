@@ -1,49 +1,0 @@
-8
-
-dir
-6435
-http://dev.rubyonrails.org/svn/rails/tags/rel_1-1-6/actionwebservice/examples/googlesearch
-http://dev.rubyonrails.org/svn/rails
-
-
-
-2005-02-18T23:55:29.453682Z
-672
-bitserf
-
-
-svn:special svn:externals svn:needs-lock
-
-
-
-
-
-
-
-
-
-
-
-5ecf4fe2-1ee6-0310-87b1-e25e094e27de
-
-autoloading
-dir
-
-direct
-dir
-
-README
-file
-
-
-
-
-2006-08-18T16:13:36.000000Z
-4295cf97cf023c0b7656f62d93c77435
-2005-02-18T21:22:52.314407Z
-668
-bitserf
-
-delegated
-dir
-

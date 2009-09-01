@@ -3,7 +3,8 @@ module UserTestHelper
     :name => 'John Doe',
     :login => 'jdoe',
     :password => 'coolness',
-    :password_confirmation => 'coolness'
+    :password_confirmation => 'coolness',
+    :email => 'jdoe@gmail.com'
   }
   
   def user_params(options = {})

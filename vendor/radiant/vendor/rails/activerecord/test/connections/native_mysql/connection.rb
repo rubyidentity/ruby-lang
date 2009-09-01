@@ -1,21 +1,25 @@
 print "Using native MySQL\n"
-require_dependency 'fixtures/course'
+require_dependency 'models/course'
 require 'logger'
 
 ActiveRecord::Base.logger = Logger.new("debug.log")
 
-db1 = 'activerecord_unittest'
-db2 = 'activerecord_unittest2'
+# GRANT ALL PRIVILEGES ON activerecord_unittest.* to 'rails'@'localhost';
+# GRANT ALL PRIVILEGES ON activerecord_unittest2.* to 'rails'@'localhost';
 
-ActiveRecord::Base.establish_connection(
-  :adapter  => "mysql",
-  :username => "rails",
-  :encoding => "utf8",
-  :database => db1
-)
+ActiveRecord::Base.configurations = {
+  'arunit' => {
+    :adapter  => 'mysql',
+    :username => 'rails',
+    :encoding => 'utf8',
+    :database => 'activerecord_unittest',
+  },
+  'arunit2' => {
+    :adapter  => 'mysql',
+    :username => 'rails',
+    :database => 'activerecord_unittest2'
+  }
+}
 
-Course.establish_connection(
-  :adapter  => "mysql",
-  :username => "rails",
-  :database => db2
-)
+ActiveRecord::Base.establish_connection 'arunit'
+Course.establish_connection 'arunit2'

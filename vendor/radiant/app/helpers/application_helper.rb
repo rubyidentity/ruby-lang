@@ -1,6 +1,8 @@
-require 'radiant/config'
-
 module ApplicationHelper
+  include LocalTime
+  include Admin::RegionsHelper
+  include Radiant::LegacyRoutes
+  
   def config
     Radiant::Config
   end
@@ -18,22 +20,21 @@ module ApplicationHelper
   end
   
   def logged_in?
-    session[:user] ? true : false
+    !current_user.nil?
   end
+  
+  def save_model_button(model, options = {})
+    options[:label] ||= model.new_record? ?
+      "Create #{model.class.name}" : "Save Changes"
+    options[:class] ||= "button"
 
-  def save_model_button(model)
-    label = if model.new_record?
-      "Create #{model.class.name}"
-    else
-      'Save Changes'
-    end
-    submit_tag label, :class => 'button'
+    submit_tag options.delete(:label), options
   end
   
   def save_model_and_continue_editing_button(model)
     submit_tag 'Save and Continue Editing', :name => 'continue', :class => 'button'
   end
-
+  
   # Redefine pluralize() so that it doesn't put the count at the beginning of
   # the string.
   def pluralize(count, singular, plural = nil)
@@ -41,27 +42,25 @@ module ApplicationHelper
       singular
     elsif plural
       plural
-    elsif Object.const_defined?("Inflector")
-      Inflector.pluralize(singular)
     else
-      singular + "s"
+      ActiveSupport::Inflector.pluralize(singular)
     end
   end
   
   def links_for_navigation
-    tabs = []
-    tabs << nav_link_to('Pages', page_index_url)
-    tabs << nav_link_to('Snippets', snippet_index_url)
-    tabs << nav_link_to('Layouts', layout_index_url) if developer? 
-	  tabs.join(separator)
+    tabs = admin.tabs
+    links = tabs.map do |tab|
+      nav_link_to(tab.name, File.join(ActionController::Base.relative_url_root || '', tab.url)) if tab.shown_for?(current_user)
+    end.compact
+    links.join(separator)
   end
   
   def separator
     %{ <span class="separator"> | </span> }
   end
-    
+  
   def current_url?(options)
-    url = case
+    url = case options
     when Hash
       url_for options
     else
@@ -76,32 +75,23 @@ module ApplicationHelper
   end
   
   def nav_link_to(name, options)
-    logger.debug 'options are: ' + options.to_s
     if current_url?(options)
-	    %{<strong>#{ link_to name, options }</strong>}
-	  else
-	    link_to name, options
-	  end
+      %{<strong>#{ link_to name, options }</strong>}
+    else
+      link_to name, options
+    end
   end
   
   def admin?
-    user = session[:user]
-    user and user.admin?
+    current_user and current_user.admin?
   end
   
   def developer?
-    user = session[:user]
-    user and (user.developer? or user.admin?)
+    current_user and (current_user.developer? or current_user.admin?)
   end
   
   def focus(field_name)
-    %{
-    <script type="text/javascript">
-    // <![CDATA[
-  	  Field.activate('#{field_name}');
-    // ]]>
-    </script>
-    }
+    javascript_tag "Field.activate('#{field_name}');"
   end
   
   def updated_stamp(model)
@@ -112,7 +102,7 @@ module ApplicationHelper
       if login or time
         html = %{<p style="clear: left"><small>Last updated } 
         html << %{by #{login} } if login
-        html << %{at #{ time.strftime("%I:%M <small>%p</small> on %B %d, %Y") }} if time
+        html << %{at #{ timestamp(time) }} if time
         html << %{</small></p>}
         html
       end
@@ -120,6 +110,10 @@ module ApplicationHelper
       %{<p class="clear">&nbsp;</p>}
     end
   end
+
+  def timestamp(time)
+    adjust_time(time).strftime("%I:%M <small>%p</small> on %B %d, %Y")     
+  end 
   
   def meta_visible(symbol)
     v = case symbol
@@ -128,7 +122,7 @@ module ApplicationHelper
     when :meta, :meta_less
       meta_errors?
     end
-    ' style="display: none"' unless v
+    v ? {} : {:style => "display:none"}
   end
   
   def meta_errors?
@@ -136,10 +130,33 @@ module ApplicationHelper
   end
   
   def toggle_javascript_for(id)
-    "javascript:Element.toggle('#{id}', 'more-#{id}', 'less-#{id}')"
+    "Element.toggle('#{id}'); Element.toggle('more-#{id}'); Element.toggle('less-#{id}');"
   end
   
-  def cookies
-    @cookies
+  def image(name, options = {})
+    image_tag(append_image_extension("admin/#{name}"), options)
   end
+  
+  def image_submit(name, options = {})
+    image_submit_tag(append_image_extension("admin/#{name}"), options)
+  end
+  
+  def admin
+    Radiant::AdminUI.instance
+  end
+  
+  def filter_options_for_select(selected=nil)
+    options_for_select([['<none>', '']] + TextFilter.descendants.map { |s| s.filter_name }.sort, selected)
+  end
+  
+  private
+  
+    def append_image_extension(name)
+      unless name =~ /\.(.*?)$/
+        name + '.png'
+      else
+        name
+      end
+    end
+  
 end

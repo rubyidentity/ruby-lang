@@ -1,3 +1,8 @@
+#
+# This is only an example configuration. Please see the Rails
+# documentation for more details.
+#
+
 development:
   adapter: postgresql
   database: radiant_dev

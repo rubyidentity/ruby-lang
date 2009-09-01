@@ -1,6 +1,7 @@
 require 'delegate'
 require 'optparse'
 require 'fileutils'
+require 'tempfile'
 require 'erb'
 
 module Rails
@@ -16,7 +17,7 @@ module Rails
       # Even more convenient access to commands.  Include Commands in
       # the generator Base class to get a nice #command instance method
       # which returns a delegate for the requested command.
-      def self.append_features(base)
+      def self.included(base)
         base.send(:define_method, :command) do |command|
           Commands.instance(command, self)
         end
@@ -39,6 +40,7 @@ module Rails
         # Replay action manifest.  RewindBase subclass rewinds manifest.
         def invoke!
           manifest.replay(self)
+          after_generate
         end
 
         def dependency(generator_name, args, runtime_options = {})
@@ -56,6 +58,17 @@ module Rails
         end
 
         protected
+          def current_migration_number
+            Dir.glob("#{RAILS_ROOT}/#{@migration_directory}/[0-9]*_*.rb").inject(0) do |max, file_path|
+              n = File.basename(file_path).split('_', 2).first.to_i
+              if n > max then n else max end
+            end
+          end
+             
+          def next_migration_number
+            current_migration_number + 1
+          end
+               
           def migration_directory(relative_path)
             directory(@migration_directory = relative_path)
           end
@@ -68,37 +81,58 @@ module Rails
             not existing_migrations(file_name).empty?
           end
 
-          def current_migration_number
-            Dir.glob("#{@migration_directory}/[0-9]*.rb").inject(0) do |max, file_path|
-              n = File.basename(file_path).split('_', 2).first.to_i
-              if n > max then n else max end
+          def next_migration_string(padding = 3)
+            if ActiveRecord::Base.timestamped_migrations
+              Time.now.utc.strftime("%Y%m%d%H%M%S")
+            else
+              "%.#{padding}d" % next_migration_number
             end
           end
 
-          def next_migration_number
-            current_migration_number + 1
-          end
-
-          def next_migration_string(padding = 3)
-            "%.#{padding}d" % next_migration_number
+          def gsub_file(relative_destination, regexp, *args, &block)
+            path = destination_path(relative_destination)
+            content = File.read(path).gsub(regexp, *args, &block)
+            File.open(path, 'wb') { |file| file.write(content) }
           end
 
         private
           # Ask the user interactively whether to force collision.
-          def force_file_collision?(destination)
-            $stdout.print "overwrite #{destination}? [Ynaq] "
-            case $stdin.gets
-              when /a/i
+          def force_file_collision?(destination, src, dst, file_options = {}, &block)
+            $stdout.print "overwrite #{destination}? (enter \"h\" for help) [Ynaqdh] "
+            case $stdin.gets.chomp
+              when /\Ad\z/i
+                Tempfile.open(File.basename(destination), File.dirname(dst)) do |temp|
+                  temp.write render_file(src, file_options, &block)
+                  temp.rewind
+                  $stdout.puts `#{diff_cmd} "#{dst}" "#{temp.path}"`
+                end
+                puts "retrying"
+                raise 'retry diff'
+              when /\Aa\z/i
                 $stdout.puts "forcing #{spec.name}"
                 options[:collision] = :force
-              when /q/i
+              when /\Aq\z/i
                 $stdout.puts "aborting #{spec.name}"
                 raise SystemExit
-              when /n/i then :skip
-              else :force
+              when /\An\z/i then :skip
+              when /\Ay\z/i then :force
+              else
+                $stdout.puts <<-HELP
+Y - yes, overwrite
+n - no, do not overwrite
+a - all, overwrite this and all others
+q - quit, abort
+d - diff, show the differences between the old and the new
+h - help, show this help
+HELP
+                raise 'retry'
             end
           rescue
             retry
+          end
+
+          def diff_cmd
+            ENV['RAILS_DIFF'] || 'diff -u'
           end
 
           def render_template_part(template_options)
@@ -136,6 +170,7 @@ module Rails
         # Ruby or Rails.  In the future, expand to check other namespaces
         # such as the rest of the user's app.
         def class_collisions(*class_names)
+          path = class_names.shift
           class_names.flatten.each do |class_name|
             # Convert to string to allow symbol arguments.
             class_name = class_name.to_s
@@ -147,15 +182,19 @@ module Rails
             nesting = class_name.split('::')
             name = nesting.pop
 
+            # Hack to limit const_defined? to non-inherited on 1.9.
+            extra = []
+            extra << false unless Object.method(:const_defined?).arity == 1
+
             # Extract the last Module in the nesting.
             last = nesting.inject(Object) { |last, nest|
-              break unless last.const_defined?(nest)
+              break unless last.const_defined?(nest, *extra)
               last.const_get(nest)
             }
 
             # If the last Module exists, check whether the given
             # class exists and raise a collision if so.
-            if last and last.const_defined?(name.camelize)
+            if last and last.const_defined?(name.camelize, *extra)
               raise_class_collision(class_name)
             end
           end
@@ -168,7 +207,7 @@ module Rails
         #   file 'config/empty.log', 'log/test.log', :chmod => 0664
         # :shebang sets the #!/usr/bin/ruby line for scripts
         #   file 'bin/generate.rb', 'script/generate', :chmod => 0755, :shebang => '/usr/bin/env ruby'
-        # :collision sets the collision option only for the destination file: 
+        # :collision sets the collision option only for the destination file:
         #   file 'settings/server.yml', 'config/server.yml', :collision => :skip
         #
         # Collisions are handled by checking whether the destination file
@@ -178,11 +217,11 @@ module Rails
           # Determine full paths for source and destination files.
           source              = source_path(relative_source)
           destination         = destination_path(relative_destination)
-          destination_exists  = File.exists?(destination)
+          destination_exists  = File.exist?(destination)
 
           # If source and destination are identical then we're done.
           if destination_exists and identical?(source, destination, &block)
-            return logger.identical(relative_destination) 
+            return logger.identical(relative_destination)
           end
 
           # Check for and resolve file collisions.
@@ -191,7 +230,7 @@ module Rails
             # Make a choice whether to overwrite the file.  :force and
             # :skip already have their mind made up, but give :ask a shot.
             choice = case (file_options[:collision] || options[:collision]).to_sym #|| :ask
-              when :ask   then force_file_collision?(relative_destination)
+              when :ask   then force_file_collision?(relative_destination, source, destination, file_options, &block)
               when :force then :force
               when :skip  then :skip
               else raise "Invalid collision option: #{options[:collision].inspect}"
@@ -217,29 +256,18 @@ module Rails
           # if block given so templaters may render the source file.  If a
           # shebang is requested, replace the existing shebang or insert a
           # new one.
-          File.open(destination, 'wb') do |df|
-            File.open(source, 'rb') do |sf|
-              if block_given?
-                df.write(yield(sf))
-              else
-                if file_options[:shebang]
-                  df.puts("#!#{file_options[:shebang]}")
-                  if line = sf.gets
-                    df.puts(line) if line !~ /^#!/
-                  end
-                end
-                df.write(sf.read)
-              end
-            end
+          File.open(destination, 'wb') do |dest|
+            dest.write render_file(source, file_options, &block)
           end
 
           # Optionally change permissions.
           if file_options[:chmod]
             FileUtils.chmod(file_options[:chmod], destination)
           end
-          
-          # Optionally add file to subversion
+
+          # Optionally add file to subversion or git
           system("svn add #{destination}") if options[:svn]
+          system("git add -v #{relative_destination}") if options[:git]
         end
 
         # Checks if the source and the destination file are identical. If
@@ -253,7 +281,7 @@ module Rails
         end
 
         # Generate a file for a Rails application using an ERuby template.
-        # Looks up and evalutes a template by name and writes the result.
+        # Looks up and evaluates a template by name and writes the result.
         #
         # The ERB template uses explicit trim mode to best control the
         # proliferation of whitespace in generated code.  <%- trims leading
@@ -270,7 +298,7 @@ module Rails
           file(relative_source, relative_destination, template_options) do |file|
             # Evaluate any assignments in a temporary, throwaway binding.
             vars = template_options[:assigns] || {}
-            b = binding
+            b = template_options[:binding] || binding
             vars.each { |k,v| eval "#{k} = vars[:#{k}] || vars['#{k}']", b }
 
             # Render the source file with the temporary binding.
@@ -286,17 +314,33 @@ module Rails
         end
 
         # Create a directory including any missing parent directories.
-        # Always directories which exist.
+        # Always skips directories which exist.
         def directory(relative_path)
           path = destination_path(relative_path)
-          if File.exists?(path)
+          if File.exist?(path)
             logger.exists relative_path
           else
             logger.create relative_path
-            FileUtils.mkdir_p(path) unless options[:pretend]
-            
-            # Optionally add file to subversion
-            system("svn add #{path}") if options[:svn]
+            unless options[:pretend]
+              FileUtils.mkdir_p(path)
+              # git doesn't require adding the paths, adding the files later will
+              # automatically do a path add.
+
+              # Subversion doesn't do path adds, so we need to add
+              # each directory individually.
+              # So stack up the directory tree and add the paths to
+              # subversion in order without recursion.
+              if options[:svn]
+                stack = [relative_path]
+                until File.dirname(stack.last) == stack.last # dirname('.') == '.'
+                  stack.push File.dirname(stack.last)
+                end
+                stack.reverse_each do |rel_path|
+                  svn_path = destination_path(rel_path)
+                  system("svn add -N #{svn_path}") unless File.directory?(File.join(svn_path, '.svn'))
+                end
+              end
+            end
           end
         end
 
@@ -316,22 +360,53 @@ module Rails
           template(relative_source, "#{relative_destination}/#{next_migration_string}_#{migration_file_name}.rb", template_options)
         end
 
+        def route_resources(*resources)
+          resource_list = resources.map { |r| r.to_sym.inspect }.join(', ')
+          sentinel = 'ActionController::Routing::Routes.draw do |map|'
+
+          logger.route "map.resources #{resource_list}"
+          unless options[:pretend]
+            gsub_file 'config/routes.rb', /(#{Regexp.escape(sentinel)})/mi do |match|
+              "#{match}\n  map.resources #{resource_list}\n"
+            end
+          end
+        end
+
         private
+          def render_file(path, options = {})
+            File.open(path, 'rb') do |file|
+              if block_given?
+                yield file
+              else
+                content = ''
+                if shebang = options[:shebang]
+                  content << "#!#{shebang}\n"
+                  if line = file.gets
+                    content << "line\n" if line !~ /^#!/
+                  end
+                end
+                content << file.read
+              end
+            end
+          end
+
           # Raise a usage error with an informative WordNet suggestion.
           # Thanks to Florian Gross (flgr).
           def raise_class_collision(class_name)
             message = <<end_message
-  The name '#{class_name}' is reserved by Ruby on Rails.
+  The name '#{class_name}' is either already used in your application or reserved by Ruby on Rails.
   Please choose an alternative and run this generator again.
 end_message
             if suggest = find_synonyms(class_name)
-              message << "\n  Suggestions:  \n\n"
-              message << suggest.join("\n")
+              if suggest.any?
+                message << "\n  Suggestions:  \n\n"
+                message << suggest.join("\n")
+              end
             end
             raise UsageError, message
           end
 
-          SYNONYM_LOOKUP_URI = "http://wordnet.princeton.edu/cgi-bin/webwn2.0?stage=2&word=%s&posnumber=1&searchtypenumber=2&senses=&showglosses=1"
+          SYNONYM_LOOKUP_URI = "http://wordnet.princeton.edu/perl/webwn?s=%s"
 
           # Look up synonyms on WordNet.  Thanks to Florian Gross (flgr).
           def find_synonyms(word)
@@ -339,8 +414,8 @@ end_message
             require 'timeout'
             timeout(5) do
               open(SYNONYM_LOOKUP_URI % word) do |stream|
-                data = stream.read.gsub("&nbsp;", " ").gsub("<BR>", "")
-                data.scan(/^Sense \d+\n.+?\n\n/m)
+                # Grab words linked to dictionary entries as possible synonyms
+                data = stream.read.gsub("&nbsp;", " ").scan(/<a href="webwn.*?">([\w ]*?)<\/a>/s).uniq
               end
             end
           rescue Exception
@@ -355,7 +430,7 @@ end_message
         # Remove a file if it exists and is a file.
         def file(relative_source, relative_destination, file_options = {})
           destination = destination_path(relative_destination)
-          if File.exists?(destination)
+          if File.exist?(destination)
             logger.rm relative_destination
             unless options[:pretend]
               if options[:svn]
@@ -368,7 +443,20 @@ end_message
                 # If the directory is not in the status list, it
                 # has no modifications so we can simply remove it
                   system("svn rm #{destination}")
-                end  
+                end
+              elsif options[:git]
+                if options[:git][:new][relative_destination]
+                  # file has been added, but not committed
+                  system("git reset HEAD #{relative_destination}")
+                  FileUtils.rm(destination)
+                elsif options[:git][:modified][relative_destination]
+                  # file is committed and modified
+                  system("git rm -f #{relative_destination}")
+                else
+                  # If the directory is not in the status list, it
+                  # has no modifications so we can simply remove it
+                  system("git rm #{relative_destination}")
+                end
               else
                 FileUtils.rm(destination)
               end
@@ -390,7 +478,7 @@ end_message
           until parts.empty?
             partial = File.join(parts)
             path = destination_path(partial)
-            if File.exists?(path)
+            if File.exist?(path)
               if Dir[File.join(path, '*')].empty?
                 logger.rmdir partial
                 unless options[:pretend]
@@ -405,6 +493,8 @@ end_message
                     # has no modifications so we can simply remove it
                       system("svn rm #{path}")
                     end
+                  # I don't think git needs to remove directories?..
+                  # or maybe they have special consideration...
                   else
                     FileUtils.rmdir(path)
                   end
@@ -438,6 +528,13 @@ end_message
             file(relative_source, file_path, template_options)
           end
         end
+
+        def route_resources(*resources)
+          resource_list = resources.map { |r| r.to_sym.inspect }.join(', ')
+          look_for = "\n  map.resources #{resource_list}\n"
+          logger.route "map.resources #{resource_list}"
+          gsub_file 'config/routes.rb', /(#{look_for})/mi, ''
+        end
       end
 
 
@@ -470,10 +567,15 @@ end_message
         def readme(*args)
           logger.readme args.join(', ')
         end
-        
+
         def migration_template(relative_source, relative_destination, options = {})
           migration_directory relative_destination
           logger.migration_template file_name
+        end
+
+        def route_resources(*resources)
+          resource_list = resources.map { |r| r.to_sym.inspect }.join(', ')
+          logger.route "map.resources #{resource_list}"
         end
       end
 
@@ -497,7 +599,7 @@ end_message
              return
            end
 
-           logger.refreshing "#{template_options[:insert].gsub(/\.rhtml/,'')} inside #{relative_destination}"
+           logger.refreshing "#{template_options[:insert].gsub(/\.erb/,'')} inside #{relative_destination}"
 
            begin_mark = Regexp.quote(template_part_mark(template_options[:begin_mark], template_options[:mark_id]))
            end_mark = Regexp.quote(template_part_mark(template_options[:end_mark], template_options[:mark_id]))

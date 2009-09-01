@@ -1,50 +1,57 @@
-require_dependency 'response_cache'
-
 class SiteController < ApplicationController
-  session :off
+  skip_before_filter :verify_authenticity_token
   
   no_login_required
   
-  attr_accessor :config, :cache
-  
-  def initialize
-    @config = Radiant::Config
-    @cache = ResponseCache.instance
+  cattr_writer :cache_timeout
+  def self.cache_timeout
+    @@cache_timeout ||= 5.minutes
   end
   
   def show_page
-    @response.headers.delete('Cache-Control')
-    url = params[:url].to_s
-    if live? and (@cache.response_cached?(url))
-      @cache.update_response(url, response)
-      @performed_render = true
+    url = params[:url]
+    if Array === url
+      url = url.join('/')
     else
-      show_uncached_page(url)
+      url = url.to_s
     end
+
+    if @page = find_page(url)
+      process_page(@page)
+      set_cache_control
+      @performed_render ||= true
+    else
+      render :template => 'site/not_found', :status => 404
+    end
+  rescue Page::MissingRootPageError
+    redirect_to welcome_url
   end
   
   private
+    def set_cache_control
+      if (request.head? || request.get?) && @page.cache?
+        expires_in self.class.cache_timeout, :public => true, :private => false
+      else
+        expires_in nil, :private => true, "no-cache" => true
+        headers['ETag'] = ''
+      end
+    end
     
     def find_page(url)
       found = Page.find_by_url(url, live?)
       found if found and (found.published? or dev?)
     end
 
-    def show_uncached_page(url)
-      @page = find_page(url)
-      unless @page.nil?
-        @page.process(request, response)
-        @cache.cache_response(url, response) if live? and @page.cache?
-        @performed_render = true
-      else
-        render :template => 'site/not_found', :status => 404
-      end
-    rescue Page::MissingRootPageError
-      redirect_to(:controller => 'admin/welcome')
+    def process_page(page)
+      page.process(request, response)
     end
 
     def dev?
-      (@request.host == @config['dev.host']) or (@request.host =~ /^dev/)
+      if dev_host = @config['dev.host']
+        request.host == dev_host
+      else
+        request.host =~ /^dev\./
+      end
     end
     
     def live?

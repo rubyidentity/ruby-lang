@@ -1,12 +1,12 @@
 class CreateRadiantTables < ActiveRecord::Migration
   def self.up
-    create_table "config" do |t|
+    create_table "config", :force => true do |t|
       t.column "key", :string, :limit => 40, :default => "", :null => false
       t.column "value", :string, :default => ""
     end
     add_index "config", ["key"], :name => "key", :unique => true 
 
-    create_table "pages" do |t|
+    create_table "pages", :force => true do |t|
       t.column "title", :string
       t.column "slug", :string, :limit => 100
       t.column "breadcrumb", :string, :limit => 160
@@ -21,14 +21,14 @@ class CreateRadiantTables < ActiveRecord::Migration
       t.column "updated_by", :integer
     end
 
-    create_table "page_parts" do |t|
+    create_table "page_parts", :force => true do |t|
       t.column "name", :string, :limit => 100
       t.column "filter", :string, :limit => 25
       t.column "content", :text
       t.column "page_id", :integer
     end
 
-    create_table "snippets" do |t|
+    create_table "snippets", :force => true do |t|
       t.column "name", :string, :limit => 100, :default => "", :null => false
       t.column "filter", :string, :limit => 25
       t.column "content", :text
@@ -39,7 +39,7 @@ class CreateRadiantTables < ActiveRecord::Migration
     end
     add_index "snippets", ["name"], :name => "name", :unique => true
 
-    create_table "layouts" do |t|
+    create_table "layouts", :force => true do |t|
       t.column "name", :string, :limit => 100
       t.column "content", :text
       t.column "created_at", :datetime
@@ -48,7 +48,7 @@ class CreateRadiantTables < ActiveRecord::Migration
       t.column "updated_by", :integer
     end
     
-    create_table "users" do |t|
+    create_table "users", :force => true do |t|
       t.column "name", :string, :limit => 100
       t.column "email", :string
       t.column "login", :string, :limit => 40, :default => "", :null => false

@@ -1,8 +1,8 @@
+require 'active_support/dependencies'
+
 module ActionMailer
   module Helpers #:nodoc:
-    def self.append_features(base) #:nodoc:
-      super
-
+    def self.included(base) #:nodoc:
       # Initialize the base module to aggregate its helpers.
       base.class_inheritable_accessor :master_helper_module
       base.master_helper_module = Module.new
@@ -13,20 +13,18 @@ module ActionMailer
       base.class_eval do
         # Wrap inherited to create a new master helper module for subclasses.
         class << self
-          alias_method :inherited_without_helper, :inherited
-          alias_method :inherited, :inherited_with_helper
+          alias_method_chain :inherited, :helper
         end
 
         # Wrap initialize_template_class to extend new template class
         # instances with the master helper module.
-        alias_method :initialize_template_class_without_helper, :initialize_template_class
-        alias_method :initialize_template_class, :initialize_template_class_with_helper
+        alias_method_chain :initialize_template_class, :helper
       end
     end
 
     module ClassMethods
       # Makes all the (instance) methods in the helper module available to templates rendered through this controller.
-      # See ActionView::Helpers (link:classes/ActionView/Helpers.html) for more about making your own helper modules 
+      # See ActionView::Helpers (link:classes/ActionView/Helpers.html) for more about making your own helper modules
       # available to the templates.
       def add_template_helper(helper_module) #:nodoc:
         master_helper_module.module_eval "include #{helper_module}"
@@ -38,7 +36,7 @@ module ActionMailer
       #   helper FooHelper
       # includes FooHelper in the template class.
       #   helper { def foo() "#{bar} is the very best" end }
-      # evaluates the block in the template class, adding method #foo.
+      # evaluates the block in the template class, adding method +foo+.
       #   helper(:three, BlindHelper) { def mice() 'mice' end }
       # does all three.
       def helper(*args, &block)
@@ -49,11 +47,11 @@ module ActionMailer
             when String, Symbol
               file_name  = arg.to_s.underscore + '_helper'
               class_name = file_name.camelize
-                
+
               begin
                 require_dependency(file_name)
               rescue LoadError => load_error
-                requiree = / -- (.*?)(\.rb)?$/.match(load_error).to_a[1]
+                requiree = / -- (.*?)(\.rb)?$/.match(load_error.message).to_a[1]
                 msg = (requiree == file_name) ? "Missing helper file helpers/#{file_name}.rb" : "Can't load file: #{requiree}"
                 raise LoadError.new(msg).copy_blame!(load_error)
               end
@@ -76,7 +74,7 @@ module ActionMailer
         methods.flatten.each do |method|
           master_helper_module.module_eval <<-end_eval
             def #{method}(*args, &block)
-              controller.send(%(#{method}), *args, &block)
+              controller.__send__(%(#{method}), *args, &block)
             end
           end_eval
         end
@@ -91,17 +89,17 @@ module ActionMailer
         attrs.flatten.each { |attr| helper_method(attr, "#{attr}=") }
       end
 
-      private 
+      private
         def inherited_with_helper(child)
           inherited_without_helper(child)
           begin
             child.master_helper_module = Module.new
-            child.master_helper_module.send :include, master_helper_module
-            child.helper child.name.underscore
+            child.master_helper_module.__send__(:include, master_helper_module)
+            child.helper child.name.to_s.underscore
           rescue MissingSourceFile => e
-            raise unless e.is_missing?("helpers/#{child.name.underscore}_helper")
+            raise unless e.is_missing?("helpers/#{child.name.to_s.underscore}_helper")
           end
-        end        
+        end
     end
 
     private

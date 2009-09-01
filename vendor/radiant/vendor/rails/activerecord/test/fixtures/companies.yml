@@ -5,6 +5,7 @@ first_client:
   client_of: 2
   name: Summit
   ruby_type: Client
+  firm_name: 37signals
 
 first_firm:
   id: 1
@@ -48,3 +49,8 @@ jadedpixel:
   id: 8 
   name: Jadedpixel
   client_of: 6
+
+odegy:
+  id: 9
+  name: Odegy
+  type: ExclusivelyDependentFirm

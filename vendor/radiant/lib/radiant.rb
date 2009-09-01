@@ -1,12 +1,12 @@
-RADIANT_ROOT = File.join(File.dirname(__FILE__), "..") unless defined? RADIANT_ROOT
+RADIANT_ROOT = File.expand_path(File.join(File.dirname(__FILE__), "..")) unless defined? RADIANT_ROOT
 
 unless defined? Radiant::Version
   module Radiant
     module Version
       Major = '0'
-      Minor = '5'
-      Tiny  = '2'
-    
+      Minor = '8'
+      Tiny  = '0'
+
       class << self
         def to_s
           [Major, Minor, Tiny].join('.')

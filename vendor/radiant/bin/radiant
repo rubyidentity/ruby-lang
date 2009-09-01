@@ -1,430 +1,53 @@
 #!/usr/bin/env ruby
 
-autoload 'OptionParser', 'optparse'
-autoload 'Radiant',      File.join(File.dirname(__FILE__), "..", "lib", "radiant")
-autoload 'ConsoleUtils', File.join(File.dirname(__FILE__), "..", "lib", "console_utils")
+require File.join(File.dirname(__FILE__), '..', 'config', 'boot')
 
-class RadiantCommandApplication
-  include ConsoleUtils
-  
-  def self.run(args = ARGV)
-    new.run(args)
-  end
-  
-  def initialize
-    @ignore = %w( . .. .svn )
-    @radiant_root = File.expand_path(clean_path(File.join(File.dirname(__FILE__), '..')))
-  end
-  
-  def run(args = [])
-    parse_args(args)
-    determine_application_type if [:normal, :upgrade].include?(@mode)
-    send "run_#{@mode}"
-  end
-  
-  private
-  
-    def parse_args(args)
-      args = args.dup
-      
-      @overwrite = false
-      @dirname = args.pop unless args.last =~ /^-/
-      @dirname = clean_path(@dirname) unless @dirname.nil?
-      @mode = :normal
-      
-      @opts = OptionParser.new do |opts|
-        opts.banner =  "Usage: #{File.basename($0)} [options] PATH"
-        opts.separator "Create a Radiant application at PATH."
-        opts.separator ""
-      
-        opts.separator "Options:\n"
-      
-        opts.on("--upgrade",
-          "Upgrade an existing install to the latest version. It is highly",
-          "recommended that you back up your installation before upgrading.\n") do
-          @mode = :upgrade
-        end
-      
-        opts.on("--unpack",
-          "Completely unpack Radiant and cause it to run in 'application' mode. ",
-          "Without this flag Radiant is unpacked in 'instance' mode, which ",
-          "basically means that the `radiant` command only unpacks the files ",
-          "necessary to run the application and all other files are 'linked' in ",
-          "at run time. Where the files are linked in from depends on whether ",
-          "you run the `radiant` command from a gem or another unpacked ",
-          "Radiant install.\n") do
-          @application_type = :application
-        end
-      
-        opts.on("-f", "--force", "Overwrites and delete files in PATH without prompting.\n") do |type|
-          @overwrite = true
-        end
-        
-        opts.on("--no-backups", "Turn file backups off during an upgrade.\n") do
-          @backups = false
-        end
-      
-        opts.on("-v", "--version", "Display the Radiant version number for this command.\n") do
-          @mode = :version
-        end
-        
-        opts.on("--current-version", "Display the Radiant version number for the install at PATH.\n") do
-          @mode = :current_version
-        end
-      
-        opts.on("-?", "--help", "Display this message.\n") do
-          @mode = :help
-        end
-      end
-    
-      begin
-        @opts.parse(args)
-        if @dirname.nil? and [:normal, :upgrade, :current_version].include?(@mode)
-          puts 'Invalid path.'
-          @mode = :help
-        end
-      rescue OptionParser::ParseError => e
-        puts e.message.capitalize
-        @mode = :help
-      end
-    end
-  
-    def run_normal
-      announce "Unpacking Radiant #{ @application_type }..." do
-        send "unpack_radiant_#{ @application_type }"
-        make_scripts_executable
-      end
-      puts "Done."
-      output_additional_instructions
-    end
-    
-    def run_upgrade
-      case
-      when current_version.nil?
-        announce_not_installed
-      when current_version == latest_version
-        announce_already_upgraded
-      else
-        @backups = @overwrite || ask_yes_or_no("Would you like to create backups of files that Radiant replaces", :no) if @backups.nil?
-        versions = ['0.5.1', '0.5.2']
-        index_of_current_version = versions.index(current_version) || -1
-        versions.each do |version|
-          if versions.index(version) > index_of_current_version
-            announce "Upgrading Radiant to version #{version}..." do
-              send "upgrade_#{ @application_type }_to_#{ version.gsub('.', '_') }"
-              if version == latest_version
-                change_rails_gem_version_in_environment_to '1.1.6'
-                change_radiant_gem_version_in_instance_config_to(latest_version) if @application_type == :instance
-              end
-            end
-          end
-        end
-        puts "Done."
-      end
-    end
-    
-    def run_version
-      puts latest_version
-    end
-    
-    def run_current_version
-      if current_version
-        puts current_version
-      else
-        announce_not_installed
-      end
-    end
-    
-    def run_help
-      puts
-      puts @opts
-    end
-    
-    def determine_application_type
-      if @mode == :normal
-        @application_type ||= :instance
-      else
-        if File.exists? instance_config_filename
-          @application_type ||= :instance
-        else
-          @application_type ||= :application
-        end
-      end
-    end
-    
-    def announce_not_installed
-      puts 'Cannot detect that Radiant is installed in this directory!'
-    end
-    
-    def announce_already_upgraded
-      puts "Your Radiant install is already at the latest version (#{ latest_version })."
-    end
-    
-    def unpack_radiant_application
-      %w( cache log vendor/plugins ).each do |path|
-        make_path(File.join(@dirname, path))
-      end
-      remove_instance_config
-      remove_config_stub('routes')
-      copy_files @radiant_root, @dirname
-    end
-  
-    def unpack_radiant_instance
-      %w( cache config db log public script vendor/plugins ).each do |path|
-        make_path(File.join(@dirname, path))
-      end
-      %w(
-        CHANGELOG
-        config/boot.rb
-        config/database.mysql.yml
-        config/database.postgresql.yml
-        config/database.sqlite.yml
-        config/environment.rb
-        config/environments/development.rb
-        config/environments/production.rb
-        config/environments/test.rb
-        CONTRIBUTORS
-        LICENSE
-        README
-        script/about
-        script/console
-        script/plugin
-        script/process/reaper
-        script/process/spawner
-        script/process/spinner
-        script/runner
-        script/server
-        script/setup_database
-        script/version
-      ).each do |file|
-        copy_file File.join(@radiant_root, file), File.join(@dirname, file)
-      end
-      %w( public ).each do |path|
-        copy_files File.join(@radiant_root, path), File.join(@dirname, path)
-      end
-      create_instance_config
-      create_config_stub('routes')
-    end
-  
-    def make_scripts_executable
-      (
-        Dir[File.join(@dirname, 'public', 'dispatch.*')] +
-        Dir[File.join(@dirname, 'script', '**/*')]
-      ).each do |filename|
-        make_executable(filename)
-      end
-    end
-  
-    def output_additional_instructions
-      puts
-      puts "Now, if this is a fresh install do the following:"
-      puts
-      puts " 1. Create a MySQL/PostgreSQL/SQLite database for your Web site."
-      puts
-      puts " 2. Create config/database.yml for your database setup. (There are"
-      puts "    several examples in the config directory.)"
-      puts
-      puts " 3. Run the database setup script:"
-      puts
-      puts "      % script/setup_database production"
-      puts
-      puts " 4. Start it like a normal Rails application. To test execute:"
-      puts
-      puts "      % script/server production"
-      puts
-      puts "    And open your Web browser on port 3000 (http://localhost:3000)."
-      puts
-      puts "See the README for additional details."
-    end
-  
-    def instance_config_filename
-      File.join(@dirname, 'config', 'instance.yml')
-    end
-  
-    def create_instance_config(options = {})
-      version = options.delete(:version) || Radiant::Version
-      text = gem? ? "Gem Version: #{ version }" : "Radiant Root: #{@radiant_root}"
-      create_file instance_config_filename, text, options
-    end
-  
-    def remove_instance_config
-      remove_file instance_config_filename, :force => true
-    end
-  
-    def config_stub_filename(filename)
-      File.join(@dirname, 'config', filename + '.rb')
-    end
-  
-    def create_config_stub(filename)
-      make_path File.join(@dirname, 'config', File.dirname(filename))
-      create_file config_stub_filename(filename), %{require File.join(RADIANT_ROOT, "config", "#{filename}") }
-    end
-  
-    def remove_config_stub(filename)
-      remove_file config_stub_filename(filename), :force => true
-    end
-    
-    def invalid_option
-      puts "Invalid option."
-    end
-  
-    def gem?
-      parent_dir = File.expand_path(File.join(@radiant_root, '..'))
-      last_part = parent_dir.split(%r{\\|/}).pop
-      last_part.downcase == 'gems'
-    end
-  
-    def current_version
-      @current_version ||= begin
-        version_script = File.join(@dirname, 'script/version')
-        if File.exists?(version_script)
-          version_string = IO.popen(version_script).read.to_s.strip
-          $1 if version_string =~ /Radiant (\d[\d\.]+)/
-        else
-          '0.5.0' if File.directory? File.join(@dirname, 'config')
-        end
-      end
-    end
-  
-    def latest_version
-      Radiant::Version.to_s
-    end
-    
-    def file_sub(filename, pattern, substitution)
-      lines = read_file(filename)
-      if lines.sub! pattern, substitution
-        write_file(filename, lines)
-        true
-      else
-        false
-      end
-    end
-    
-    def change_rails_gem_version_in_environment_to(version)
-      filename = File.join(@dirname, 'config/environment.rb')
-      if file_sub(filename, /RAILS_GEM_VERSION\s*=\s*'\d[\.\d]+'/m, "RAILS_GEM_VERSION = '#{version}'")
-        puts "updated Rails version to #{version} in config/environment.rb"
-      else
-        print "> failed to update Rails version to #{version} in config/environment.rb\n#{ indentation }you may need to do this yourself\n"
-      end
-    end
-    
-    def change_radiant_gem_version_in_instance_config_to(version)
-      filename = File.join(@dirname, 'config/instance.yml')
-      if file_sub(filename, /Gem Version\s*:\s*\d[\.\d]+/m, "Gem Version: #{version}")
-        puts "updated Radiant version to #{version} in config/instance.yml"
-      else
-        print "> failed to update Radiant version to #{version} in config/instance.yml\n#{ indentation }you may need to do this yourself\n"
-      end
-    end
-    
-    def upgrade_files(lines)
-      lines = lines.split("\n").map { |l| l.strip }.reject { |l| l.empty? }
-      lines.each do |line|
-        command, filename = line.split(/\s+/, 2)
-        prompt = !(command =~ /!$/)
-        to = File.join(@dirname, filename)
-        case command
-        when /^(overwrite|create)/
-          command = $1
-          from = File.join(@radiant_root, filename)
-          backup_file(filename) if @backups and File.file?(to) and (@overwrite or ask_yes_or_no("backup #{filename}"))
-          if command == 'overwrite'
-            copy_file from, to, :overwrite => (@overwrite or !prompt)
-          else
-            copy_file from, to
-          end
-        when /^remove/
-          unless prompt
-            remove_file to, :force => true
-          else
-            remove_file to
-          end
-        else
-          raise 'unknown upgrade command'
-        end
-      end
-    end
-    
-    def upgrade_instance_to_0_5_1
-      upgrade_files %{
-        overwrite! CHANGELOG
-        overwrite! CONTRIBUTORS
-        create     public/.htaccess
-        create     public/images/layout.png
-        overwrite! public/images/new-layout.png
-        create     script/console
-        create     script/version
-      }
-      make_executable(File.join(@dirname, 'script/version'))
-    end
-    
-    def upgrade_application_to_0_5_1
-      upgrade_files %{
-        overwrite  app/controllers/application.rb
-        overwrite  app/helpers/admin/page_helper.rb
-        overwrite  app/helpers/application_helper.rb
-        overwrite  app/models/page_context.rb
-        overwrite  app/models/response_cache.rb
-        overwrite  app/views/admin/layout/index.rhtml
-        overwrite  app/views/admin/layout/new.rhtml
-        overwrite  app/views/admin/layout/remove.rhtml
-        overwrite  app/views/admin/page/index.rhtml
-        overwrite  app/views/admin/page/remove.rhtml
-        overwrite  app/views/admin/page/_node.rhtml
-        overwrite  app/views/admin/page/_part.rhtml
-        overwrite  app/views/admin/snippet/index.rhtml
-        overwrite  app/views/admin/snippet/new.rhtml
-        overwrite  app/views/admin/snippet/remove.rhtml
-        overwrite  app/views/admin/user/index.rhtml
-        overwrite  app/views/admin/user/new.rhtml
-        overwrite  app/views/admin/user/preferences.rhtml
-        overwrite  app/views/admin/user/remove.rhtml
-        overwrite  app/views/admin/welcome/login.rhtml
-        overwrite  app/views/layouts/application.rhtml
-        overwrite  bin/radiant
-        overwrite! CHANGELOG
-        overwrite! CONTRIBUTORS
-        overwrite  db/migrate/001_create_radiant_tables.rb
-        overwrite  db/migrate/002_insert_initial_data.rb
-        overwrite  db/schema.rb
-        create     lib/console_utils.rb
-        overwrite  lib/tasks/release.rake
-        overwrite  lib/radiant.rb
-        create     public/.htaccess
-        create     public/images/layout.png
-        overwrite! public/images/new-layout.png
-        create     script/console
-        create     script/version
-        overwrite  test/fixtures/pages.yml
-        remove!    test/fixtures/pages.yml.rej
-        overwrite  test/functional/admin/page_controller_test.rb
-        overwrite  test/functional/site_controller_test.rb
-        overwrite  test/unit/page_context_test.rb
-        remove!    test/unit/page_context_test.rb.rej
-      }
-      make_executable(File.join(@dirname, 'script/version'))
-    end
-    
-    def upgrade_instance_to_0_5_2
-      upgrade_files %{
-        overwrite! CHANGELOG
-      }
-    end
-    
-    def upgrade_application_to_0_5_2
-      upgrade_files %{
-        overwrite  bin/radiant
-        overwrite! CHANGELOG
-        overwrite  lib/tasks/release.rake
-        overwrite  lib/radiant.rb
-      }
-    end
+$LOAD_PATH << File.join(File.dirname(__FILE__), '..')
+
+require 'lib/ruby_version_check'
+Signal.trap("INT") { puts; exit }
+
+require 'lib/radiant'
+if ARGV.any? { |arg| %w(--version -v).any? { |flag| arg == flag } }
+  puts "Radiant #{Radiant::Version}"
+  exit 0
 end
 
-trap('INT') do
-  puts
-  exit
+app_path = ARGV.first
+
+require 'lib/rails_generator'
+require 'rails_generator/scripts/generate'
+
+class Rails::Generator::Base
+
+  def self.use_application_sources!
+    reset_sources
+    sources << Rails::Generator::PathSource.new(:builtin, "#{File.dirname(__FILE__)}/../lib/generators")
+  end
+
+  def add_general_options!(opt)
+    opt.separator ''
+    opt.separator 'Radiant Info:'
+    opt.on('-v', '--version', 'Show the Radiant version number and quit.')
+    opt.on('-h', '--help', 'Show this help message and quit.') { |v| options[:help] = v }
+
+    opt.separator ''
+    opt.separator 'General Options:'
+
+    opt.on('-p', '--pretend', 'Run but do not make any changes.') { |v| options[:pretend] = v }
+    opt.on('-f', '--force', 'Overwrite files that already exist.') { options[:collision] = :force }
+    opt.on('-s', '--skip', 'Skip files that already exist.') { options[:collision] = :skip }
+    opt.on('-q', '--quiet', 'Suppress normal output.') { |v| options[:quiet] = v }
+    opt.on('-t', '--backtrace', 'Debugging: show backtrace on errors.') { |v| options[:backtrace] = v }
+    opt.on('-c', '--svn', 'Modify files with subversion. (Note: svn must be in path)') do
+      options[:svn] = `svn status`.inject({}) do |opt, e|
+        opt[e.chomp[7..-1]] = true
+        opt
+      end
+    end
+  end
+
 end
 
-RadiantCommandApplication.run
+Rails::Generator::Base.use_application_sources!
+Rails::Generator::Scripts::Generate.new.run(ARGV, :generator => 'instance')

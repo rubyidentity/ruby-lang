@@ -1,85 +1,0 @@
-8
-
-dir
-6435
-http://dev.rubyonrails.org/svn/rails/tags/rel_1-1-6
-http://dev.rubyonrails.org/svn/rails
-
-
-
-2006-08-10T18:30:24.958848Z
-4751
-david
-has-props
-
-svn:special svn:externals svn:needs-lock
-
-
-
-
-
-
-
-
-
-
-
-5ecf4fe2-1ee6-0310-87b1-e25e094e27de
-
-cleanlogs.sh
-file
-
-
-
-
-2006-08-18T16:13:53.000000Z
-7dd2195f4f0a854a077c726149e98ace
-2005-03-06T22:14:57.317824Z
-865
-david
-has-props
-
-release.rb
-file
-
-
-
-
-2006-08-18T16:13:53.000000Z
-baf19af937c13df1d6aae71bd24cca04
-2006-08-09T17:47:52.339333Z
-4744
-david
-has-props
-
-actionmailer
-dir
-
-activesupport
-dir
-
-activerecord
-dir
-
-actionpack
-dir
-
-actionwebservice
-dir
-
-railties
-dir
-
-pushgems.rb
-file
-
-
-
-
-2006-08-18T16:13:53.000000Z
-af5ef83d19fb23709bc808f132ce5161
-2005-09-04T00:28:28.086667Z
-2128
-david
-has-props
-
