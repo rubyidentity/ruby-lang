@@ -1,0 +1,13 @@
+= Code Highlighter Plugin
+
+This plugin adds code syntax highlighting capabilities to Radiant.
+ 
+Once installed this plugin adds the following tag:
+ 
+<r:code [lang="ruby"]>
+  ...
+</r:code>
+
+Where lang is the name of the language you would like to highlight.
+
+(Code originally based on Tom Degrunt's work at www.degrunt.net.)
