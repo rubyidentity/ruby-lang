@@ -1,1 +1,0 @@
-require 'top_projects_behavior'
