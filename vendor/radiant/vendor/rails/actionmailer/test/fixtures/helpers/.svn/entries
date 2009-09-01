@@ -1,0 +1,40 @@
+8
+
+dir
+6435
+http://dev.rubyonrails.org/svn/rails/tags/rel_1-1-6/actionmailer/test/fixtures/helpers
+http://dev.rubyonrails.org/svn/rails
+
+
+
+2005-06-16T11:39:29.121644Z
+1446
+minam
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+5ecf4fe2-1ee6-0310-87b1-e25e094e27de
+
+test_helper.rb
+file
+
+
+
+
+2006-08-18T16:12:37.000000Z
+ff748a80b1eb3d6f44b61106253a4c81
+2005-06-16T11:39:29.121644Z
+1446
+minam
+

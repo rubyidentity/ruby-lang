@@ -1,0 +1,6 @@
+K 13
+svn:externals
+V 69
+radiant http://dev.radiantcms.org/svn/radiant/tags/rel_0-5-2/radiant
+
+END

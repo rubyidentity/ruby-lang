@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionwebservice/examples/googlesearch/delegated
+END
+google_search_service.rb
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionwebservice/examples/googlesearch/delegated/google_search_service.rb
+END
+search_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionwebservice/examples/googlesearch/delegated/search_controller.rb
+END

@@ -1,0 +1,79 @@
+8
+
+dir
+6435
+http://dev.rubyonrails.org/svn/rails/tags/rel_1-1-6/actionwebservice/lib/action_web_service/protocol
+http://dev.rubyonrails.org/svn/rails
+
+
+
+2006-03-17T22:20:09.502603Z
+3903
+david
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+5ecf4fe2-1ee6-0310-87b1-e25e094e27de
+
+soap_protocol
+dir
+
+abstract.rb
+file
+
+
+
+
+2006-08-18T16:13:34.000000Z
+bb1c4174455cc482b23bc833d5411fd9
+2005-08-16T05:45:03.731888Z
+2021
+bitserf
+
+soap_protocol.rb
+file
+
+
+
+
+2006-08-18T16:13:34.000000Z
+2bc22abbd746c9bdb06f884820ab5ce0
+2005-08-12T16:38:42.720722Z
+1994
+bitserf
+
+xmlrpc_protocol.rb
+file
+
+
+
+
+2006-08-18T16:13:34.000000Z
+b73adc43a6b37380915cdcc91e7b164e
+2006-03-03T03:19:37.110654Z
+3750
+david
+
+discovery.rb
+file
+
+
+
+
+2006-08-18T16:13:34.000000Z
+acbeabd2ab45fd54da4cd9f43560dfcb
+2005-06-25T06:27:39.530927Z
+1501
+bitserf
+

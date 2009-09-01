@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionwebservice/test/apis
+END
+auto_load_api.rb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionwebservice/test/apis/auto_load_api.rb
+END
+broken_auto_load_api.rb
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionwebservice/test/apis/broken_auto_load_api.rb
+END

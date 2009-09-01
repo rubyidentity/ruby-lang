@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/app/controllers/admin
+END
+welcome_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/app/controllers/admin/welcome_controller.rb
+END
+page_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/app/controllers/admin/page_controller.rb
+END
+layout_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/app/controllers/admin/layout_controller.rb
+END
+user_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/app/controllers/admin/user_controller.rb
+END
+model_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/app/controllers/admin/model_controller.rb
+END
+export_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/app/controllers/admin/export_controller.rb
+END
+snippet_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/app/controllers/admin/snippet_controller.rb
+END

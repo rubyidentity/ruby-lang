@@ -1,0 +1,119 @@
+8
+
+dir
+6435
+http://dev.rubyonrails.org/svn/rails/tags/rel_1-1-6/railties
+http://dev.rubyonrails.org/svn/rails
+
+
+
+2006-08-10T17:13:55.202232Z
+4750
+ulysses
+has-props
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+5ecf4fe2-1ee6-0310-87b1-e25e094e27de
+
+test
+dir
+
+Rakefile
+file
+
+
+
+
+2006-08-18T16:13:53.000000Z
+bbc7d7220a7a86cfa5a666f3fbe5edea
+2006-08-10T15:45:56.870682Z
+4746
+david
+
+CHANGELOG
+file
+
+
+
+
+2006-08-18T16:13:53.000000Z
+800ee890b587111bbee5c155f93d5cbf
+2006-08-10T15:45:56.870682Z
+4746
+david
+
+environments
+dir
+
+dispatches
+dir
+
+configs
+dir
+
+README
+file
+
+
+
+
+2006-08-18T16:13:53.000000Z
+c03e541e76f777df453c8a9696199d46
+2006-08-07T05:26:11.669593Z
+4693
+nzkoz
+
+helpers
+dir
+
+html
+dir
+
+doc
+dir
+
+lib
+dir
+
+builtin
+dir
+
+bin
+dir
+
+fresh_rakefile
+file
+
+
+
+
+2006-08-18T16:13:53.000000Z
+17f2f134da4cd31ea095d5868ca89e86
+2006-03-25T21:57:08.878299Z
+4030
+david
+has-props
+
+MIT-LICENSE
+file
+
+
+
+
+2006-08-18T16:13:53.000000Z
+d2b3c6482c4e50aec556e3e20ff68717
+2004-11-24T01:04:44.745113Z
+4
+david
+

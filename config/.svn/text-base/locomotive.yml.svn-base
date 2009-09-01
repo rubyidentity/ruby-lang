@@ -1,0 +1,6 @@
+---
+mode: production
+runs_at_launch: 0
+identifier: ruby-lang
+port: 3002
+bundle: /Applications/Locomotive2/Bundles/rails112.locobundle

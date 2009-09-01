@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/lib/active_record/acts
+END
+nested_set.rb
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/lib/active_record/acts/nested_set.rb
+END
+tree.rb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/lib/active_record/acts/tree.rb
+END
+list.rb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/lib/active_record/acts/list.rb
+END

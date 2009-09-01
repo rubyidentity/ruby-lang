@@ -1,0 +1,40 @@
+8
+
+dir
+352
+http://dev.radiantcms.org/svn/radiant/tags/rel_0-5-2/radiant/lib/plugins/index_quoting_fix
+http://dev.radiantcms.org/svn/radiant
+
+
+
+2006-04-26T19:55:43.197036Z
+5
+jlong
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+6226cccd-6db4-da11-80d6-0014220fd306
+
+init.rb
+file
+
+
+
+
+2006-08-18T16:12:29.000000Z
+658b1a8a18deb087c74c1689d1d56a76
+2006-04-26T19:55:43.197036Z
+5
+jlong
+

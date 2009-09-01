@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionwebservice/lib/action_web_service
+END
+client.rb
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionwebservice/lib/action_web_service/client.rb
+END
+scaffolding.rb
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionwebservice/lib/action_web_service/scaffolding.rb
+END
+protocol.rb
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionwebservice/lib/action_web_service/protocol.rb
+END
+container.rb
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionwebservice/lib/action_web_service/container.rb
+END
+struct.rb
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionwebservice/lib/action_web_service/struct.rb
+END
+version.rb
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionwebservice/lib/action_web_service/version.rb
+END
+dispatcher.rb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionwebservice/lib/action_web_service/dispatcher.rb
+END
+casting.rb
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionwebservice/lib/action_web_service/casting.rb
+END
+invocation.rb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionwebservice/lib/action_web_service/invocation.rb
+END
+api.rb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionwebservice/lib/action_web_service/api.rb
+END
+test_invoke.rb
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionwebservice/lib/action_web_service/test_invoke.rb
+END
+base.rb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionwebservice/lib/action_web_service/base.rb
+END

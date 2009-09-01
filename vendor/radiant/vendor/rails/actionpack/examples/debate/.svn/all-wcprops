@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionpack/examples/debate
+END
+topic.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionpack/examples/debate/topic.rhtml
+END
+index.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionpack/examples/debate/index.rhtml
+END
+new_topic.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionpack/examples/debate/new_topic.rhtml
+END

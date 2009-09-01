@@ -1,0 +1,94 @@
+8
+
+dir
+6435
+http://dev.rubyonrails.org/svn/rails/tags/rel_1-1-6/railties/html
+http://dev.rubyonrails.org/svn/rails
+
+
+
+2006-04-06T04:57:14.905653Z
+4182
+sam
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+5ecf4fe2-1ee6-0310-87b1-e25e094e27de
+
+images
+dir
+
+robots.txt
+file
+
+
+
+
+2006-08-18T16:13:41.000000Z
+a9d8217ec04c304aba7926ae1f066973
+2005-07-22T06:18:25.729106Z
+1876
+david
+
+500.html
+file
+
+
+
+
+2006-08-18T16:13:41.000000Z
+6e08d6d1f55c99e94b495679134a9eaf
+2006-03-20T05:39:13.399008Z
+3993
+david
+
+javascripts
+dir
+
+404.html
+file
+
+
+
+
+2006-08-18T16:13:41.000000Z
+1248392955936f5d9142da8f66c5b46b
+2005-07-02T11:21:25.389505Z
+1605
+david
+
+index.html
+file
+
+
+
+
+2006-08-18T16:13:41.000000Z
+f09c82f6afd0bbae971902e3f1afcddf
+2006-04-01T22:28:46.930505Z
+4126
+david
+
+favicon.ico
+file
+
+
+
+
+2006-08-18T16:13:41.000000Z
+d41d8cd98f00b204e9800998ecf8427e
+2005-03-06T17:22:56.456055Z
+861
+david
+

@@ -1,0 +1,43 @@
+8
+
+dir
+6435
+http://dev.rubyonrails.org/svn/rails/tags/rel_1-1-6/actionwebservice/test/fixtures
+http://dev.rubyonrails.org/svn/rails
+
+
+
+2006-03-03T03:19:37.110654Z
+3750
+david
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+5ecf4fe2-1ee6-0310-87b1-e25e094e27de
+
+db_definitions
+dir
+
+users.yml
+file
+
+
+
+
+2006-08-18T16:13:31.000000Z
+ef5081eb88a7052bca3b4d675321602b
+2006-03-03T03:19:37.110654Z
+3750
+david
+

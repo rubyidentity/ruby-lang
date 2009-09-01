@@ -1,0 +1,29 @@
+<h1>User Preferences</h1>
+
+<form method="post">
+  <table class="fieldset" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+      <td class="label"><label for="user_password">Password</label></td>
+      <td class="field"><%= password_field "user", "password", :class => 'textbox', :value => '', :maxlength => 40 %></td>
+      <td class="help" rowspan="2">At least 5 characters. <% unless @user.new_record? %>Leave password blank for it to remain unchanged.<% end %></td>
+    </tr>
+    <tr>
+      <td class="label"><label for="user_password_confirmation">Confirm Password</label></td>
+      <td class="field"><%= password_field "user", "password_confirmation", :class => 'textbox', :value => '', :maxlength => 40 %></td>
+    </tr>
+    <tr>
+      <td class="label"><label for="user_email">E-mail</label></td>
+      <td class="field"><%= text_field "user", "email", :class => 'textbox', :maxlength => 255 %></td>
+      <td class="help">Optional.</td>
+    </tr>
+  </table>
+  <p class="buttons">
+    <%= submit_tag 'Save Changes' %> or <%= link_to "Cancel", admin_url %>
+  </p>
+</form>
+
+<script type="text/javascript">
+// <![CDATA[
+  Field.focus('user_password');
+// ]]>
+</script>

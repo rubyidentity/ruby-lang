@@ -1,0 +1,67 @@
+8
+
+dir
+352
+http://dev.radiantcms.org/svn/radiant/tags/rel_0-5-2/radiant/test/functional
+http://dev.radiantcms.org/svn/radiant
+
+
+
+2006-08-09T02:36:54.687634Z
+93
+jlong
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+6226cccd-6db4-da11-80d6-0014220fd306
+
+application_controller_test.rb
+file
+
+
+
+
+2006-08-18T16:12:19.000000Z
+397763b18dbe92bb3ac2f512c634a3fe
+2006-04-26T17:21:00.079256Z
+1
+jlong
+
+admin
+dir
+
+site_controller_test.rb
+file
+
+
+
+
+2006-08-18T16:12:19.000000Z
+2bbbc86028637a8cdcdadbe800de62d9
+2006-08-09T02:36:54.687634Z
+93
+jlong
+
+login_system_test.rb
+file
+
+
+
+
+2006-08-18T16:12:19.000000Z
+ece80d5214647cca80638d15e804696a
+2006-04-26T17:21:00.079256Z
+1
+jlong
+

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionpack/test/fixtures/layouts
+END
+talk_from_action.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionpack/test/fixtures/layouts/talk_from_action.rhtml
+END
+standard.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionpack/test/fixtures/layouts/standard.rhtml
+END
+builder.rxml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionpack/test/fixtures/layouts/builder.rxml
+END
+yield.rhtml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionpack/test/fixtures/layouts/yield.rhtml
+END

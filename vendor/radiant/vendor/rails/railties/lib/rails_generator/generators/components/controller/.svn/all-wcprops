@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/railties/lib/rails_generator/generators/components/controller
+END
+USAGE
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/railties/lib/rails_generator/generators/components/controller/USAGE
+END
+controller_generator.rb
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/railties/lib/rails_generator/generators/components/controller/controller_generator.rb
+END

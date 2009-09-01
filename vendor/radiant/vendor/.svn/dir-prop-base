@@ -1,0 +1,8 @@
+K 13
+svn:externals
+V 205
+rails    http://dev.rubyonrails.org/svn/rails/tags/rel_1-1-6/
+radius   svn://rubyforge.org//var/svn/radius/tags/rel_0-5-1/radius/
+redcloth http://code.whytheluckystiff.net/svn/redcloth/tags/RELEASE_3_0_4/
+
+END

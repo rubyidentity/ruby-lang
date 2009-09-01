@@ -1,0 +1,11 @@
+K 10
+svn:ignore
+V 8
+pkg
+doc
+
+K 11
+svn:ignores
+V 3
+pkg
+END

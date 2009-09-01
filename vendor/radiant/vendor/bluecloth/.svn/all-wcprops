@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/vendor/bluecloth
+END
+test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/vendor/bluecloth/test.rb
+END
+LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/vendor/bluecloth/LICENSE
+END
+utils.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/vendor/bluecloth/utils.rb
+END
+CHANGES
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/vendor/bluecloth/CHANGES
+END
+install.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/vendor/bluecloth/install.rb
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/vendor/bluecloth/README
+END

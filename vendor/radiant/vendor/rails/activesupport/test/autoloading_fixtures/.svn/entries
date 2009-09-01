@@ -1,0 +1,46 @@
+8
+
+dir
+6435
+http://dev.rubyonrails.org/svn/rails/tags/rel_1-1-6/activesupport/test/autoloading_fixtures
+http://dev.rubyonrails.org/svn/rails
+
+
+
+2006-03-27T05:13:46.164893Z
+4060
+ulysses
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+5ecf4fe2-1ee6-0310-87b1-e25e094e27de
+
+a
+dir
+
+module_folder
+dir
+
+e.rb
+file
+
+
+
+
+2006-08-18T16:12:42.000000Z
+b82e738b4a4f9120f6d86e04cbb6b51a
+2006-01-29T00:37:39.221698Z
+3493
+david
+

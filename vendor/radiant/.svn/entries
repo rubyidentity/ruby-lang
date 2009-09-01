@@ -1,0 +1,127 @@
+8
+
+dir
+352
+http://dev.radiantcms.org/svn/radiant/tags/rel_0-5-2/radiant
+http://dev.radiantcms.org/svn/radiant
+
+
+
+2006-08-11T00:24:49.109132Z
+99
+jlong
+has-props
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+6226cccd-6db4-da11-80d6-0014220fd306
+
+test
+dir
+
+app
+dir
+
+log
+dir
+
+LICENSE
+file
+
+
+
+
+2006-08-18T16:12:34.000000Z
+c0071b95168903d9ecd2ca6b5339ae9b
+2006-04-27T21:19:32.780657Z
+10
+jlong
+
+Rakefile
+file
+
+
+
+
+2006-08-18T16:12:34.000000Z
+bbf560d44f092d22a30d3a562436ad8c
+2006-04-26T17:21:00.079256Z
+1
+jlong
+
+components
+dir
+
+db
+dir
+
+CHANGELOG
+file
+
+
+
+
+2006-08-18T16:12:34.000000Z
+961d4b51f4e1a8038d7c638ec6813c49
+2006-08-11T00:10:59.347602Z
+98
+jlong
+
+vendor
+dir
+
+README
+file
+
+
+
+
+2006-08-18T16:12:34.000000Z
+9ab78edd92d6c4919c48ae079a4d9f04
+2006-06-29T03:47:06.387911Z
+80
+jlong
+
+CONTRIBUTORS
+file
+
+
+
+
+2006-08-18T16:12:34.000000Z
+22cc59f224d11cfce51510ad36a8b16e
+2006-08-10T03:51:39.189029Z
+95
+jlong
+
+cache
+dir
+
+script
+dir
+
+config
+dir
+
+doc
+dir
+
+lib
+dir
+
+bin
+dir
+
+public
+dir
+

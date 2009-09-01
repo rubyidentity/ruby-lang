@@ -1,0 +1,40 @@
+8
+
+dir
+6435
+http://dev.rubyonrails.org/svn/rails/tags/rel_1-1-6/railties/lib/rails_generator/generators/components/migration/templates
+http://dev.rubyonrails.org/svn/rails
+
+
+
+2005-06-22T10:09:01.657873Z
+1477
+david
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+5ecf4fe2-1ee6-0310-87b1-e25e094e27de
+
+migration.rb
+file
+
+
+
+
+2006-08-18T16:13:45.000000Z
+d7ae6d826e07b033f164f8d76ae42dcd
+2005-06-22T10:09:01.657873Z
+1477
+david
+

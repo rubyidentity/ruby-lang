@@ -1,0 +1,43 @@
+8
+
+dir
+6435
+http://dev.rubyonrails.org/svn/rails/tags/rel_1-1-6/actionwebservice/lib
+http://dev.rubyonrails.org/svn/rails
+
+
+
+2006-08-10T15:45:56.870682Z
+4746
+david
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+5ecf4fe2-1ee6-0310-87b1-e25e094e27de
+
+action_web_service
+dir
+
+action_web_service.rb
+file
+
+
+
+
+2006-08-18T16:13:35.000000Z
+e19bc66ff9faf053e053e93859a50645
+2005-05-07T23:49:45.596696Z
+1294
+bitserf
+

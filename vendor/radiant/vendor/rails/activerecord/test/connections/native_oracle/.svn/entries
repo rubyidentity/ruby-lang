@@ -1,0 +1,40 @@
+8
+
+dir
+6435
+http://dev.rubyonrails.org/svn/rails/tags/rel_1-1-6/activerecord/test/connections/native_oracle
+http://dev.rubyonrails.org/svn/rails
+
+
+
+2006-04-04T16:33:31.099509Z
+4152
+david
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+5ecf4fe2-1ee6-0310-87b1-e25e094e27de
+
+connection.rb
+file
+
+
+
+
+2006-08-18T16:12:53.000000Z
+538c7c2814c2eaf2d7bb13c124f410f1
+2006-04-04T16:33:31.099509Z
+4152
+david
+

@@ -1,0 +1,41 @@
+8
+
+dir
+6435
+http://dev.rubyonrails.org/svn/rails/tags/rel_1-1-6/actionmailer/lib/action_mailer/vendor/text
+http://dev.rubyonrails.org/svn/rails
+
+
+
+2005-10-15T20:43:52.384650Z
+2626
+david
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+5ecf4fe2-1ee6-0310-87b1-e25e094e27de
+
+format.rb
+file
+
+
+
+
+2006-08-18T16:12:39.000000Z
+c771b612ffef3ab62340077f30aa42fc
+2005-10-15T20:43:52.384650Z
+2626
+david
+has-props
+

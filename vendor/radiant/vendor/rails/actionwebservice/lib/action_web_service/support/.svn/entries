@@ -1,0 +1,52 @@
+8
+
+dir
+6435
+http://dev.rubyonrails.org/svn/rails/tags/rel_1-1-6/actionwebservice/lib/action_web_service/support
+http://dev.rubyonrails.org/svn/rails
+
+
+
+2006-03-03T03:19:37.110654Z
+3750
+david
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+5ecf4fe2-1ee6-0310-87b1-e25e094e27de
+
+signature_types.rb
+file
+
+
+
+
+2006-08-18T16:13:34.000000Z
+44d86abfccd9cd5b7f4f7a7e48f7fc33
+2006-03-03T03:19:37.110654Z
+3750
+david
+
+class_inheritable_options.rb
+file
+
+
+
+
+2006-08-18T16:13:34.000000Z
+cd8d14ccf02b65d79290a9f5f75b2674
+2005-02-18T10:35:25.804139Z
+658
+david
+

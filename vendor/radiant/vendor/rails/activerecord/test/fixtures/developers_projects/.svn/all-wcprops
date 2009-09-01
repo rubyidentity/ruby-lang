@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/fixtures/developers_projects
+END
+david_active_record
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/fixtures/developers_projects/david_active_record
+END
+david_action_controller
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/fixtures/developers_projects/david_action_controller
+END
+jamis_active_record
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/fixtures/developers_projects/jamis_active_record
+END

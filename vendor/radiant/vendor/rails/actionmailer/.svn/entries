@@ -1,0 +1,96 @@
+8
+
+dir
+6435
+http://dev.rubyonrails.org/svn/rails/tags/rel_1-1-6/actionmailer
+http://dev.rubyonrails.org/svn/rails
+
+
+
+2006-08-10T15:45:56.870682Z
+4746
+david
+has-props
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+5ecf4fe2-1ee6-0310-87b1-e25e094e27de
+
+test
+dir
+
+Rakefile
+file
+
+
+
+
+2006-08-18T16:12:41.000000Z
+f14103eec8f0d25bac929e2ec3b2cded
+2006-08-10T15:45:56.870682Z
+4746
+david
+has-props
+
+lib
+dir
+
+CHANGELOG
+file
+
+
+
+
+2006-08-18T16:12:41.000000Z
+50d95c62c068f9eb10dc799dfb76aad5
+2006-08-10T15:45:56.870682Z
+4746
+david
+
+install.rb
+file
+
+
+
+
+2006-08-18T16:12:41.000000Z
+25be11714431ac0a340c0dbf5f8899e4
+2005-10-26T13:04:20.443506Z
+2743
+david
+
+MIT-LICENSE
+file
+
+
+
+
+2006-08-18T16:12:42.000000Z
+2304c94e0d2fd8e57cd895e1ed261647
+2004-11-24T01:04:44.745113Z
+4
+david
+
+README
+file
+
+
+
+
+2006-08-18T16:12:42.000000Z
+de96dad8e638e31a323517794ccae352
+2005-10-26T13:04:20.443506Z
+2743
+david
+has-props
+

@@ -1,0 +1,31 @@
+10
+
+dir
+315
+http://rubyidentity.org/svn/ruby-lang/ruby-lang.org/trunk/www/vendor
+http://rubyidentity.org/svn/ruby-lang
+
+
+
+2007-09-12T02:07:31.205711Z
+315
+jlong
+has-props
+
+
+svn:externals
+
+
+
+
+
+
+
+
+
+
+1a8cc80e-92fa-0310-9034-94461ed96148
+
+plugins
+dir
+

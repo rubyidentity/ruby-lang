@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/helpers
+END
+behavior_test_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/helpers/behavior_test_helper.rb
+END
+page_part_test_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/helpers/page_part_test_helper.rb
+END
+snippet_test_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/helpers/snippet_test_helper.rb
+END
+archive_index_test_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/helpers/archive_index_test_helper.rb
+END
+validation_test_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/helpers/validation_test_helper.rb
+END
+caching_test_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/helpers/caching_test_helper.rb
+END
+page_test_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/helpers/page_test_helper.rb
+END
+layout_test_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/helpers/layout_test_helper.rb
+END
+behavior_render_test_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/helpers/behavior_render_test_helper.rb
+END
+user_test_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/helpers/user_test_helper.rb
+END

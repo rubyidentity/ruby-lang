@@ -1,0 +1,16 @@
+Description:
+    The behavior generator creates stubs for a new behavior.
+
+    The generator takes a model name as its argument.  The model name may be
+    given in CamelCase or under_score and should not be suffixed with 'Behavior'.
+
+    The generator creates a model class in app/behaviors and a test suite in
+    test/unit/behaviors.
+
+Example:
+    ./script/generate behavior BookArchive
+
+    This will create a BookArchive behavior:
+        Behavior:   app/behaviors/book_archive_behavior.rb
+        Test:       test/unit/behaviors/book_archive_behavior_test.rb
+

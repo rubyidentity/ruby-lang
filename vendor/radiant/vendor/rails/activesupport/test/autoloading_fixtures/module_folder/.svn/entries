@@ -1,0 +1,52 @@
+8
+
+dir
+6435
+http://dev.rubyonrails.org/svn/rails/tags/rel_1-1-6/activesupport/test/autoloading_fixtures/module_folder
+http://dev.rubyonrails.org/svn/rails
+
+
+
+2006-03-27T05:13:46.164893Z
+4060
+ulysses
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+5ecf4fe2-1ee6-0310-87b1-e25e094e27de
+
+nested_class.rb
+file
+
+
+
+
+2006-08-18T16:12:42.000000Z
+6e338670d12367d133a15cb1e5a398f1
+2006-03-27T05:13:46.164893Z
+4060
+ulysses
+
+nested_sibling.rb
+file
+
+
+
+
+2006-08-18T16:12:42.000000Z
+23df1786c092a9b14ce09e55c5f67807
+2006-03-27T05:13:46.164893Z
+4060
+ulysses
+

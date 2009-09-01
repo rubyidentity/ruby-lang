@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/railties/configs/databases
+END
+postgresql.yml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/railties/configs/databases/postgresql.yml
+END
+sqlite2.yml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/railties/configs/databases/sqlite2.yml
+END
+sqlite3.yml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/railties/configs/databases/sqlite3.yml
+END
+mysql.yml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/railties/configs/databases/mysql.yml
+END
+oracle.yml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/railties/configs/databases/oracle.yml
+END

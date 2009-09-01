@@ -1,0 +1,55 @@
+8
+
+dir
+6435
+http://dev.rubyonrails.org/svn/rails/tags/rel_1-1-6/railties/lib/rails_generator/generators/components/mailer
+http://dev.rubyonrails.org/svn/rails
+
+
+
+2006-01-13T08:31:07.669973Z
+3411
+marcel
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+5ecf4fe2-1ee6-0310-87b1-e25e094e27de
+
+mailer_generator.rb
+file
+
+
+
+
+2006-08-18T16:13:44.000000Z
+c3389d275311069dbf90555c2733de61
+2005-06-21T06:54:04.780096Z
+1461
+david
+
+USAGE
+file
+
+
+
+
+2006-08-18T16:13:44.000000Z
+88effe33bfb84f11c0056a7fcb94acda
+2006-01-13T08:31:07.669973Z
+3411
+marcel
+
+templates
+dir
+

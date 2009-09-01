@@ -1,0 +1,52 @@
+8
+
+dir
+6435
+http://dev.rubyonrails.org/svn/rails/tags/rel_1-1-6/actionwebservice/test/apis
+http://dev.rubyonrails.org/svn/rails
+
+
+
+2005-02-25T23:39:39.620985Z
+800
+bitserf
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+5ecf4fe2-1ee6-0310-87b1-e25e094e27de
+
+auto_load_api.rb
+file
+
+
+
+
+2006-08-18T16:13:31.000000Z
+ac560a676e964ca883ad5025b9949fb3
+2005-02-25T23:39:39.620985Z
+800
+bitserf
+
+broken_auto_load_api.rb
+file
+
+
+
+
+2006-08-18T16:13:31.000000Z
+e1c06d85ae7b8b032bef47e42e4c08f9
+2005-02-25T23:39:39.620985Z
+800
+bitserf
+

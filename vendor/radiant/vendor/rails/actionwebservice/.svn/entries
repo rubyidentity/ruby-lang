@@ -1,0 +1,121 @@
+8
+
+dir
+6435
+http://dev.rubyonrails.org/svn/rails/tags/rel_1-1-6/actionwebservice
+http://dev.rubyonrails.org/svn/rails
+
+
+
+2006-08-10T15:45:56.870682Z
+4746
+david
+has-props
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+5ecf4fe2-1ee6-0310-87b1-e25e094e27de
+
+test
+dir
+
+Rakefile
+file
+
+
+
+
+2006-08-18T16:13:37.000000Z
+a5c677a3b965c619cc04235ce1f6a6c9
+2006-08-10T15:45:56.870682Z
+4746
+david
+
+setup.rb
+file
+
+
+
+
+2006-08-18T16:13:37.000000Z
+932b6c52330c6fa3da2ece4b188dfe0b
+2005-11-17T00:48:16.455840Z
+3067
+marcel
+
+TODO
+file
+
+
+
+
+2006-08-18T16:13:37.000000Z
+3abdeb2e1fcf507edb896d8c702c6191
+2005-05-31T02:50:02.749561Z
+1375
+bitserf
+
+lib
+dir
+
+CHANGELOG
+file
+
+
+
+
+2006-08-18T16:13:37.000000Z
+dc19683234be3460e645731ccfc39b1b
+2006-08-10T15:45:56.870682Z
+4746
+david
+
+install.rb
+file
+
+
+
+
+2006-08-18T16:13:37.000000Z
+c7791d0f9ffc803142739285f37e40d1
+2005-11-07T09:52:56.530599Z
+2909
+david
+
+MIT-LICENSE
+file
+
+
+
+
+2006-08-18T16:13:37.000000Z
+bbd71e184d4a6dd00b559735c3471d30
+2005-02-18T10:35:25.804139Z
+658
+david
+
+README
+file
+
+
+
+
+2006-08-18T16:13:37.000000Z
+92595f1cd833430f70e99e305f42f776
+2005-11-07T09:52:56.530599Z
+2909
+david
+
+examples
+dir
+

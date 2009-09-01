@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionpack/test/fixtures/application_root/app/controllers/module_that_holds_controllers
+END
+nested_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionpack/test/fixtures/application_root/app/controllers/module_that_holds_controllers/nested_controller.rb
+END

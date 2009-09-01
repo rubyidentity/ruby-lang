@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/functional/admin
+END
+welcome_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/functional/admin/welcome_controller_test.rb
+END
+page_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/functional/admin/page_controller_test.rb
+END
+layout_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/functional/admin/layout_controller_test.rb
+END
+user_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/functional/admin/user_controller_test.rb
+END
+model_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/functional/admin/model_controller_test.rb
+END
+export_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/functional/admin/export_controller_test.rb
+END
+snippet_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/functional/admin/snippet_controller_test.rb
+END

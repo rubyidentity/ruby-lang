@@ -1,0 +1,18 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+first:
+  id: 1
+  name: first
+  content: test
+another:
+  id: 2
+  name: another
+  content: another test
+markdown:
+  id: 3
+  name: markdown
+  content: **markdown**
+  filter_id: Markdown
+snippet_with_tag:
+  id: 4
+  name: snippet_with_tag
+  content: <r:page:title />

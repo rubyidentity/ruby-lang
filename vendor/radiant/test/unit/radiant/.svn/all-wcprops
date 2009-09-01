@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/unit/radiant
+END
+config_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/unit/radiant/config_test.rb
+END
+exporter_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/unit/radiant/exporter_test.rb
+END

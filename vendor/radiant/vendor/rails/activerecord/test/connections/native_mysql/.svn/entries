@@ -1,0 +1,40 @@
+8
+
+dir
+6435
+http://dev.rubyonrails.org/svn/rails/tags/rel_1-1-6/activerecord/test/connections/native_mysql
+http://dev.rubyonrails.org/svn/rails
+
+
+
+2006-02-25T23:54:57.871408Z
+3654
+david
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+5ecf4fe2-1ee6-0310-87b1-e25e094e27de
+
+connection.rb
+file
+
+
+
+
+2006-08-18T16:12:53.000000Z
+5521d6cff2b5438d494d1c749842f7ce
+2006-02-25T23:54:57.871408Z
+3654
+david
+

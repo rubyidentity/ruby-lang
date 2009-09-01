@@ -1,0 +1,52 @@
+8
+
+dir
+6435
+http://dev.rubyonrails.org/svn/rails/tags/rel_1-1-6/actionpack/examples/address_book
+http://dev.rubyonrails.org/svn/rails
+
+
+
+2004-11-24T01:04:44.745113Z
+4
+david
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+5ecf4fe2-1ee6-0310-87b1-e25e094e27de
+
+layout.rhtml
+file
+
+
+
+
+2006-08-18T16:13:30.000000Z
+768684c89affd92367ba71be8ed3003f
+2004-11-24T01:04:44.745113Z
+4
+david
+
+index.rhtml
+file
+
+
+
+
+2006-08-18T16:13:30.000000Z
+bf019c5576204e39fe07cc178121c521
+2004-11-24T01:04:44.745113Z
+4
+david
+

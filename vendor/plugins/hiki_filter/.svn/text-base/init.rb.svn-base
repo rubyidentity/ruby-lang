@@ -1,0 +1,1 @@
+require 'hiki_filter'

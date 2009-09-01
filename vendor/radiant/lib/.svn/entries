@@ -1,0 +1,121 @@
+8
+
+dir
+352
+http://dev.radiantcms.org/svn/radiant/tags/rel_0-5-2/radiant/lib
+http://dev.radiantcms.org/svn/radiant
+
+
+
+2006-08-11T00:10:59.347602Z
+98
+jlong
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+6226cccd-6db4-da11-80d6-0014220fd306
+
+plugins
+dir
+
+advanced_delegation.rb
+file
+
+
+
+
+2006-08-18T16:12:31.000000Z
+a1ec5322e664fc8eafb5b44e86410cce
+2006-04-26T17:21:00.079256Z
+1
+jlong
+
+inheritable_class_attributes.rb
+file
+
+
+
+
+2006-08-18T16:12:31.000000Z
+dd92770f253f5be1cf520052da3cf6f1
+2006-04-26T17:21:00.079256Z
+1
+jlong
+
+console_utils.rb
+file
+
+
+
+
+2006-08-18T16:12:31.000000Z
+b7b3560e6047f00325b4e67483f67e1f
+2006-08-03T03:04:10.872888Z
+89
+jlong
+
+radiant.rb
+file
+
+
+
+
+2006-08-18T16:12:31.000000Z
+733914413b27858b04c9bcaa2e9c8383
+2006-08-11T00:10:59.347602Z
+98
+jlong
+
+tasks
+dir
+
+generators
+dir
+
+registerable.rb
+file
+
+
+
+
+2006-08-18T16:12:31.000000Z
+a9c909b439ed981c94a9ab11a8f6ed38
+2006-04-26T17:21:00.079256Z
+1
+jlong
+
+archive_index_behavior_tags_and_methods.rb
+file
+
+
+
+
+2006-08-18T16:12:31.000000Z
+d8068c59b7bc9c80e10f722344607187
+2006-05-24T20:53:43.362608Z
+51
+jlong
+
+login_system.rb
+file
+
+
+
+
+2006-08-18T16:12:31.000000Z
+b1431391168edd7ca0505866d87bae17
+2006-04-26T17:21:00.079256Z
+1
+jlong
+

@@ -1,0 +1,40 @@
+8
+
+dir
+6435
+http://dev.rubyonrails.org/svn/rails/tags/rel_1-1-6/activerecord/test/connections/native_sqlserver
+http://dev.rubyonrails.org/svn/rails
+
+
+
+2005-11-24T07:01:43.857218Z
+3182
+bitsweat
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+5ecf4fe2-1ee6-0310-87b1-e25e094e27de
+
+connection.rb
+file
+
+
+
+
+2006-08-18T16:12:53.000000Z
+63bc65848cedcd878e76a7bc099e8a3f
+2005-11-24T07:01:43.857218Z
+3182
+bitsweat
+

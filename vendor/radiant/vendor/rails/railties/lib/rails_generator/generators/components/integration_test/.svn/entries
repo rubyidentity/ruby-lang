@@ -1,0 +1,55 @@
+8
+
+dir
+6435
+http://dev.rubyonrails.org/svn/rails/tags/rel_1-1-6/railties/lib/rails_generator/generators/components/integration_test
+http://dev.rubyonrails.org/svn/rails
+
+
+
+2006-03-25T23:45:28.059533Z
+4035
+david
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+5ecf4fe2-1ee6-0310-87b1-e25e094e27de
+
+USAGE
+file
+
+
+
+
+2006-08-18T16:13:44.000000Z
+80fc12a4a9eac640a2c064a4f5a2741a
+2006-03-25T19:57:03.583355Z
+4027
+minam
+
+integration_test_generator.rb
+file
+
+
+
+
+2006-08-18T16:13:44.000000Z
+a8c9071d01d87110b42f149cf4d08995
+2006-03-25T19:57:03.583355Z
+4027
+minam
+
+templates
+dir
+

@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionpack/test/fixtures/application_root/app/controllers/a_class_that_contains_a_controller
+END
+poorly_placed_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionpack/test/fixtures/application_root/app/controllers/a_class_that_contains_a_controller/poorly_placed_controller.rb
+END

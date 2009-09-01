@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/ruby-lang/!svn/ver/249/ruby-lang.org/trunk/www/script
+END
+console
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/ruby-lang/!svn/ver/249/ruby-lang.org/trunk/www/script/console
+END
+setup_database
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/ruby-lang/!svn/ver/249/ruby-lang.org/trunk/www/script/setup_database
+END
+version
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/ruby-lang/!svn/ver/249/ruby-lang.org/trunk/www/script/version
+END
+server
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/ruby-lang/!svn/ver/249/ruby-lang.org/trunk/www/script/server
+END
+runner
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/ruby-lang/!svn/ver/249/ruby-lang.org/trunk/www/script/runner
+END
+about
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/ruby-lang/!svn/ver/249/ruby-lang.org/trunk/www/script/about
+END
+plugin
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/ruby-lang/!svn/ver/249/ruby-lang.org/trunk/www/script/plugin
+END

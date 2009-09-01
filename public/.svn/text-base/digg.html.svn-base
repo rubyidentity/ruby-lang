@@ -1,0 +1,13 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head>
+<title>Oops! Someone posted about the redesign on Digg.</title> <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1" /> <style type="text/css"> <!-- a { color: #3256B6; }
+a:visited { color: #7130B8; } a:hover, a:visited:hover { color: #C61A1A; text-decoration: none; } body { font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size: 80%; text-align: center; } h1, h2 { font-family: Georgia, Palatino, "Times New Roman", Times, serif; font-weight: normal; } h1 { font-size: 400%; 
+margin-bottom: 0; text-align: center; } h2 { color: #c61a1a; font-size: 180%; } p { line-height: 1.7; margin-top: 1.5em; } ul { width: 80%; float: left;
+padding-left: 20%; padding-bottom: 1em; } ul li { float: left; width: 49%; } #page { margin-left: auto; margin-right: auto; text-align: left; width: 42em; } 
+#footer { text-align: center; } --> </style> </head> <body> <div id="page"> <div id="header"> <h1>Oops!</h1> <h2>Someone posted about the redesign on Digg.</h2> 
+</div> <div id="content"> <p>Since the redesigned Ruby Web site is hosted on the same server as the <a href="http://ruby-lang.org">current site</a>, the fact 
+that we are getting <a href="http://digg.com/design/New_Ruby_2_0_ish_Redesign">this much traffic</a> has taken down both sites. That, and the fact that <a 
+href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/210528">Ruby 1.8.5 was just released</a> meant that we decided to take down the redesigned 
+Ruby-Lang for the time being.</p> <p>Look for us again when we launch the new Ruby web site in a couple of weeks.</p> <p>Thank you for your patience&#8230;</p> 
+<p>The Ruby Visual Identity Team</p> </div> <div id="footer"> </div> </div> </body> 
+</html>

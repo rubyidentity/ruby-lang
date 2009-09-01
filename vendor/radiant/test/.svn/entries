@@ -1,0 +1,55 @@
+8
+
+dir
+352
+http://dev.radiantcms.org/svn/radiant/tags/rel_0-5-2/radiant/test
+http://dev.radiantcms.org/svn/radiant
+
+
+
+2006-08-09T02:36:54.687634Z
+93
+jlong
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+6226cccd-6db4-da11-80d6-0014220fd306
+
+unit
+dir
+
+test_helper.rb
+file
+
+
+
+
+2006-08-18T16:12:20.000000Z
+ebce00e98181d47ebd9dce94453882b3
+2006-05-15T22:39:29.481729Z
+40
+jlong
+
+functional
+dir
+
+helpers
+dir
+
+fixtures
+dir
+
+mocks
+dir
+

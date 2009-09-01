@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/railties/lib/commands/process
+END
+reaper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/railties/lib/commands/process/reaper.rb
+END
+spinner.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/railties/lib/commands/process/spinner.rb
+END
+spawner.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/railties/lib/commands/process/spawner.rb
+END

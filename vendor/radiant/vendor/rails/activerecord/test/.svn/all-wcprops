@@ -1,0 +1,281 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test
+END
+associations_extensions_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/associations_extensions_test.rb
+END
+deprecated_associations_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/deprecated_associations_test.rb
+END
+all.sh
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/all.sh
+END
+active_schema_mysql.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/active_schema_mysql.rb
+END
+ar_schema_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/ar_schema_test.rb
+END
+mixin_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/mixin_test.rb
+END
+locking_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/locking_test.rb
+END
+reflection_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/reflection_test.rb
+END
+associations_join_model_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/associations_join_model_test.rb
+END
+aaa_create_tables_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/aaa_create_tables_test.rb
+END
+associations_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/associations_test.rb
+END
+synonym_test_oracle.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/synonym_test_oracle.rb
+END
+unconnected_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/unconnected_test.rb
+END
+associations_cascaded_eager_loading_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/associations_cascaded_eager_loading_test.rb
+END
+column_alias_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/column_alias_test.rb
+END
+defaults_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/defaults_test.rb
+END
+fixtures_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/fixtures_test.rb
+END
+base_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/base_test.rb
+END
+association_inheritance_reload.rb
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/association_inheritance_reload.rb
+END
+schema_dumper_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/schema_dumper_test.rb
+END
+callbacks_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/callbacks_test.rb
+END
+adapter_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/adapter_test.rb
+END
+class_inheritable_attributes_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/class_inheritable_attributes_test.rb
+END
+calculations_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/calculations_test.rb
+END
+threaded_connections_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/threaded_connections_test.rb
+END
+schema_test_postgresql.rb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/schema_test_postgresql.rb
+END
+binary_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/binary_test.rb
+END
+deprecated_finder_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/deprecated_finder_test.rb
+END
+associations_go_eager_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/associations_go_eager_test.rb
+END
+migration_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/migration_test.rb
+END
+inheritance_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/inheritance_test.rb
+END
+default_test_firebird.rb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/default_test_firebird.rb
+END
+lifecycle_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/lifecycle_test.rb
+END
+multiple_db_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/multiple_db_test.rb
+END
+mixin_nested_set_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/mixin_nested_set_test.rb
+END
+method_scoping_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/method_scoping_test.rb
+END
+copy_table_sqlite.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/copy_table_sqlite.rb
+END
+abstract_unit.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/abstract_unit.rb
+END
+finder_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/finder_test.rb
+END
+modules_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/modules_test.rb
+END
+transactions_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/transactions_test.rb
+END
+aggregations_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/aggregations_test.rb
+END
+pk_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/pk_test.rb
+END
+association_callbacks_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/association_callbacks_test.rb
+END
+readonly_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/readonly_test.rb
+END
+validations_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/test/validations_test.rb
+END

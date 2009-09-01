@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/examples
+END
+associations.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/examples/associations.rb
+END
+associations.png
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/examples/associations.png
+END
+shared_setup.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/examples/shared_setup.rb
+END
+validation.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/examples/validation.rb
+END

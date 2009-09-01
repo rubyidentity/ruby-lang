@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionpack/lib/action_controller/macros
+END
+in_place_editing.rb
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionpack/lib/action_controller/macros/in_place_editing.rb
+END
+auto_complete.rb
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/actionpack/lib/action_controller/macros/auto_complete.rb
+END

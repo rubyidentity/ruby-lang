@@ -1,0 +1,58 @@
+8
+
+dir
+352
+http://dev.radiantcms.org/svn/radiant/tags/rel_0-5-2/radiant/db
+http://dev.radiantcms.org/svn/radiant
+
+
+
+2006-08-10T03:51:39.189029Z
+95
+jlong
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+6226cccd-6db4-da11-80d6-0014220fd306
+
+development_structure.sql
+file
+
+
+
+
+2006-08-18T16:12:25.000000Z
+c66116c255f64900247351b7c47bc015
+2006-05-02T04:46:28.933868Z
+19
+jlong
+
+schema.rb
+file
+
+
+
+
+2006-08-18T16:12:25.000000Z
+cc2e8984cc4d4bd34b52cb9a92e9cca9
+2006-08-10T03:51:39.189029Z
+95
+jlong
+
+migrate
+dir
+
+templates
+dir
+

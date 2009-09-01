@@ -1,0 +1,40 @@
+8
+
+dir
+352
+http://dev.radiantcms.org/svn/radiant/tags/rel_0-5-2/radiant/app/views/admin/welcome
+http://dev.radiantcms.org/svn/radiant
+
+
+
+2006-07-01T05:18:35.930947Z
+84
+jlong
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+6226cccd-6db4-da11-80d6-0014220fd306
+
+login.rhtml
+file
+
+
+
+
+2006-08-18T16:12:23.000000Z
+8f6e5a1987e55f1fabd4e95b7e03278b
+2006-07-01T05:18:35.930947Z
+84
+jlong
+

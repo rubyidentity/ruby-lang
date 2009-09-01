@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/fixtures
+END
+pages.yml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/fixtures/pages.yml
+END
+layouts.yml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/fixtures/layouts.yml
+END
+users.yml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/fixtures/users.yml
+END
+page_parts.yml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/fixtures/page_parts.yml
+END
+snippets.yml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/fixtures/snippets.yml
+END

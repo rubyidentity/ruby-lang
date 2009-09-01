@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/lib/active_record/connection_adapters
+END
+sqlite_adapter.rb
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/lib/active_record/connection_adapters/sqlite_adapter.rb
+END
+abstract_adapter.rb
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/lib/active_record/connection_adapters/abstract_adapter.rb
+END
+postgresql_adapter.rb
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/lib/active_record/connection_adapters/postgresql_adapter.rb
+END
+mysql_adapter.rb
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/lib/active_record/connection_adapters/mysql_adapter.rb
+END
+oracle_adapter.rb
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/lib/active_record/connection_adapters/oracle_adapter.rb
+END
+firebird_adapter.rb
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/lib/active_record/connection_adapters/firebird_adapter.rb
+END
+sqlserver_adapter.rb
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/lib/active_record/connection_adapters/sqlserver_adapter.rb
+END
+sybase_adapter.rb
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/lib/active_record/connection_adapters/sybase_adapter.rb
+END
+db2_adapter.rb
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/lib/active_record/connection_adapters/db2_adapter.rb
+END
+openbase_adapter.rb
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/activerecord/lib/active_record/connection_adapters/openbase_adapter.rb
+END

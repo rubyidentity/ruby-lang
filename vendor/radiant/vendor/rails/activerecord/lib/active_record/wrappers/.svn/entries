@@ -1,0 +1,40 @@
+8
+
+dir
+6435
+http://dev.rubyonrails.org/svn/rails/tags/rel_1-1-6/activerecord/lib/active_record/wrappers
+http://dev.rubyonrails.org/svn/rails
+
+
+
+2004-11-24T01:04:44.745113Z
+4
+david
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+5ecf4fe2-1ee6-0310-87b1-e25e094e27de
+
+yaml_wrapper.rb
+file
+
+
+
+
+2006-08-18T16:13:07.000000Z
+001f03853019f5625c2ad84d8af95aaa
+2004-11-24T01:04:44.745113Z
+4
+david
+

@@ -1,0 +1,40 @@
+8
+
+dir
+6435
+http://dev.rubyonrails.org/svn/rails/tags/rel_1-1-6/railties/lib/rails_generator/generators/components/session_migration/templates
+http://dev.rubyonrails.org/svn/rails
+
+
+
+2005-11-20T04:21:06.264202Z
+3098
+bitsweat
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+5ecf4fe2-1ee6-0310-87b1-e25e094e27de
+
+migration.rb
+file
+
+
+
+
+2006-08-18T16:13:45.000000Z
+dfdef0a56d3448eaa30e4ec91eb49713
+2005-11-20T04:21:06.264202Z
+3098
+bitsweat
+

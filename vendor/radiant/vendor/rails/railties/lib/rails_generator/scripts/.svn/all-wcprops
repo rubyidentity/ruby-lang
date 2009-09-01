@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/railties/lib/rails_generator/scripts
+END
+update.rb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/railties/lib/rails_generator/scripts/update.rb
+END
+destroy.rb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/railties/lib/rails_generator/scripts/destroy.rb
+END
+generate.rb
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/railties/lib/rails_generator/scripts/generate.rb
+END

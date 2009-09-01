@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/railties/lib/rails_generator/generators/components/web_service
+END
+USAGE
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/railties/lib/rails_generator/generators/components/web_service/USAGE
+END
+web_service_generator.rb
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/rails/!svn/ver/4751/tags/rel_1-1-6/railties/lib/rails_generator/generators/components/web_service/web_service_generator.rb
+END

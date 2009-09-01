@@ -1,0 +1,40 @@
+8
+
+dir
+352
+http://dev.radiantcms.org/svn/radiant/tags/rel_0-5-2/radiant/vendor/bluecloth/bin
+http://dev.radiantcms.org/svn/radiant
+
+
+
+2006-04-26T18:01:52.608400Z
+4
+jlong
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+6226cccd-6db4-da11-80d6-0014220fd306
+
+bluecloth
+file
+
+
+
+
+2006-08-18T16:12:27.000000Z
+d22825d45a055cf812197c622052341f
+2006-04-26T18:01:52.608400Z
+4
+jlong
+

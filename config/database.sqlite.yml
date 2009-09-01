@@ -1,0 +1,20 @@
+development:
+  adapter: sqlite
+  database: db/radiant_dev.sqlite.db
+  username: root
+  password:
+  host: localhost
+  
+test:
+  adapter: sqlite
+  database: db/radiant_test.sqlite.db
+  username: root
+  password:
+  host: localhost
+
+production:
+  adapter: sqlite
+  database: db/radiant_live.sqlite.db
+  username: root
+  password:
+  host: localhost

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/functional
+END
+application_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/functional/application_controller_test.rb
+END
+site_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/functional/site_controller_test.rb
+END
+login_system_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/radiant/!svn/ver/99/tags/rel_0-5-2/radiant/test/functional/login_system_test.rb
+END

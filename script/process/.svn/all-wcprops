@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/ruby-lang/!svn/ver/249/ruby-lang.org/trunk/www/script/process
+END
+spawner
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/ruby-lang/!svn/ver/249/ruby-lang.org/trunk/www/script/process/spawner
+END
+reaper
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/ruby-lang/!svn/ver/249/ruby-lang.org/trunk/www/script/process/reaper
+END
+spinner
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/ruby-lang/!svn/ver/249/ruby-lang.org/trunk/www/script/process/spinner
+END
