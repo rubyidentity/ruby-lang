@@ -91,14 +91,14 @@ ActiveRecord::Schema.define(:version => 20081203140407) do
   create_table "users", :force => true do |t|
     t.string   "name",          :limit => 100
     t.string   "email"
-    t.string   "login",         :limit => 40,  :default => "",    :null => false
+    t.string   "login",         :limit => 40,  :default => "", :null => false
     t.string   "password",      :limit => 40
+    t.integer  "admin",                        :default => 0,  :null => false
+    t.integer  "developer",                    :default => 0,  :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "created_by_id"
     t.integer  "updated_by_id"
-    t.boolean  "admin",                        :default => false, :null => false
-    t.boolean  "developer",                    :default => false, :null => false
     t.text     "notes"
     t.integer  "lock_version",                 :default => 0
     t.string   "salt"
