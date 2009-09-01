@@ -2,3 +2,4 @@ config/database.yml
 log/*
 tmp/*
 cache/*
+public/.top_projects
