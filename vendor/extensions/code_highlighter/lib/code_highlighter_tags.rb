@@ -1,6 +1,14 @@
 module CodeHighlighterTags
   include Radiant::Taggable
   
+  desc %{
+    Highlights a block of code. If used with the Textile filter be sure to
+    surround the tag with &lt;notextile&gt; opening and closing tags.
+    
+    *Usage:*
+    
+    <pre><code><r:code [lang="ruby"]>...</r:code></code></pre>
+  }
   tag 'code' do |tag|
     lang = tag.attr['lang'] || "ruby"
     convertor = Syntax::Convertors::HTML.for_syntax(lang)
